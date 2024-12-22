@@ -3,11 +3,89 @@
   <view class="tab-content">
     <block wx:if="{{activeTab === 'shipping'}}">
       <!-- Shipping ledger content -->
-      <text>发货流程台账表</text>
+      <view class="ledger">
+        <view class="row">
+          <text class="label">发货流水号:</text>
+          <text class="value">{{shippingData.serialNumber}}</text>
+        </view>
+        <view class="row">
+          <text class="label">领料单位:</text>
+          <text class="value">{{shippingData.receivingUnit}}</text>
+        </view>
+        <view class="row">
+          <text class="label">施工项目:</text>
+          <text class="value">{{shippingData.project}}</text>
+        </view>
+        <view class="row">
+          <text class="label">实物发货人:</text>
+          <text class="value">{{shippingData.shipper}}</text>
+        </view>
+        <view class="row">
+          <text class="label">发货师傅发货时间:</text>
+          <text class="value">{{shippingData.shippingTime}}</text>
+        </view>
+        <view class="row">
+          <text class="label">实际出库数量:</text>
+          <text class="value">{{shippingData.actualQuantity}}</text>
+        </view>
+        <view class="row">
+          <text class="label">物料类别:</text>
+          <text class="value">{{shippingData.materialCategory}}</text>
+        </view>
+        <view class="row">
+          <text class="label">发货问题备注:</text>
+          <text class="value">{{shippingData.issueRemarks}}</text>
+        </view>
+        <view class="row">
+          <text class="label">做账员发起发货时间:</text>
+          <text class="value">{{shippingData.initiatedTime}}</text>
+        </view>
+        <view class="row">
+          <text class="label">做账人:</text>
+          <text class="value">{{shippingData.accountant}}</text>
+        </view>
+      </view>
     </block>
     <block wx:if="{{activeTab === 'receiving'}}">
       <!-- Receiving ledger content -->
-      <text>收货流程台账表</text>
+      <view class="ledger">
+        <view class="row">
+          <text class="label">收货流水号:</text>
+          <text class="value">{{receivingData.serialNumber}}</text>
+        </view>
+        <view class="row">
+          <text class="label">订单号:</text>
+          <text class="value">{{receivingData.orderNumber}}</text>
+        </view>
+        <view class="row">
+          <text class="label">供应商:</text>
+          <text class="value">{{receivingData.supplier}}</text>
+        </view>
+        <view class="row">
+          <text class="label">接货人:</text>
+          <text class="value">{{receivingData.receiver}}</text>
+        </view>
+        <view class="row">
+          <text class="label">收货时间:</text>
+          <text class="value">{{receivingData.receivingTime}}</text>
+        </view>
+        <view class="row">
+          <text class="label">是否入库:</text>
+          <text class="value">{{receivingData.stored}}</text>
+        </view>
+        <view class="row">
+          <text class="label">入库做账时间:</text>
+          <text class="value">{{receivingData.accountingTime}}</text>
+        </view>
+        <view class="row">
+          <text class="label">做账人:</text>
+          <text class="value">{{receivingData.accountant}}</text>
+        </view>
+        <view class="row">
+          <text class="label">做账问题备注:</text>
+          <text class="value">{{receivingData.issueRemarks}}</text>
+        </view>
+      </view>
     </block>
   </view>
   <view class="bottom-nav">

@@ -5,7 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activeTab: 'shipping' // Default tab
+    activeTab: 'shipping', // Default tab
+    shippingData: {
+      serialNumber: 'WHSC-FH-20231001-001',
+      receivingUnit: 'Example Unit',
+      project: 'Example Project',
+      shipper: '系统自动抓取',
+      shippingTime: '2023-10-01 10:00',
+      actualQuantity: 100,
+      materialCategory: 'Example Material',
+      issueRemarks: '无',
+      initiatedTime: '2023-10-01 09:00',
+      accountant: '系统自动抓取'
+    },
+    receivingData: {
+      serialNumber: 'WHSC-SH-20231001-001',
+      orderNumber: '123456',
+      supplier: 'Example Supplier',
+      receiver: '系统自动抓取',
+      receivingTime: '2023-10-01 08:00',
+      stored: '是',
+      accountingTime: '2023-10-01 08:30',
+      accountant: '系统自动抓取',
+      issueRemarks: '无'
+    }
   },
 
   /**

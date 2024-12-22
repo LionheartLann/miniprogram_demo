@@ -10,6 +10,26 @@
   overflow-y: auto;
 }
 
+.ledger {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.label {
+  flex: 1;
+  font-weight: bold;
+}
+
+.value {
+  flex: 2;
+}
+
 .bottom-nav {
   display: flex;
   justify-content: space-around;
