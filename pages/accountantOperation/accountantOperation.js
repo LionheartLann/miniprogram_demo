@@ -1,70 +1,75 @@
+// pages/accountantOperation/accountantOperation.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    receivingTasks: [
-      { id: '123456', status: '待填写', statusClass: 'red' },
-      { id: '654321', status: '已完成', statusClass: 'green' }
-    ],
-    shippingTasks: [
-      { id: '654321', status: '已完成', statusClass: 'green' },
-      { id: '123456', status: '待审核', statusClass: 'yellow' }
-    ]
+    activeTab: 'shipping' // Default tab
   },
 
-  onSearchInput(e) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
+  },
+
+  /**
+   * 处理标签切换事件
+   */
+  onTabChange(event) {
     this.setData({
-      searchQuery: e.detail.value
-    });
-  },
-
-  onSearch() {
-    // Implement search logic here
-    wx.showToast({
-      title: '搜索功能待实现',
-      icon: 'none'
-    });
-  },
-
-  viewTask(e) {
-    const id = e.currentTarget.dataset.id;
-    wx.showToast({
-      title: `查看任务: ${id}`,
-      icon: 'none'
-    });
-    // Navigate to the task detail page
-  },
-
-  editTask(e) {
-    const id = e.currentTarget.dataset.id;
-    wx.showToast({
-      title: `编辑任务: ${id}`,
-      icon: 'none'
-    });
-    // Navigate to the task edit page
-  },
-
-  addReceivingTask() {
-    wx.navigateTo({
-      url: '/pages/shipmentForm/shipmentForm?role=做账员'
-    });
-  },
-
-  addShippingTask() {
-    wx.navigateTo({
-      url: '/pages/shipmentForm/shipmentForm?role=做账员'
-    });
-  },
-
-  exportLedgerB() {
-    wx.showToast({
-      title: '导出台账B功能待实现',
-      icon: 'none'
-    });
-  },
-
-  exportLedgerC() {
-    wx.showToast({
-      title: '导出台账C功能待实现',
-      icon: 'none'
+      activeTab: event.currentTarget.dataset.tab
     });
   }
-}); 
+})
