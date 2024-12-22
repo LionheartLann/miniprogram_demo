@@ -1,0 +1,9 @@
+<view class="container">
+  <text class="title">请选择您的角色</text>
+  <view class="role-list">
+    <button class="role-button" bindtap="selectRole" data-role="做账员">做账员</button>
+    <button class="role-button" bindtap="selectRole" data-role="发货师傅">发货师傅</button>
+    <button class="role-button" bindtap="selectRole" data-role="接车师傅">接车师傅</button>
+    <button class="role-button" bindtap="selectRole" data-role="仓管员">仓管员</button>
+  </view>
+</view> 

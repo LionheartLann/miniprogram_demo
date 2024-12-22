@@ -1,0 +1,80 @@
+<view class="container">
+  <view class="section">
+    <text class="section-title">发货基本信息</text>
+    <view class="form-group">
+      <label>发货流水号</label>
+      <input value="WHSC-FH-240121-0001-001" disabled />
+    </view>
+    <view class="form-group">
+      <label>领料单位</label>
+      <input placeholder="请输入领料单位" bindinput="onInput" data-field="unit" />
+    </view>
+    <view class="form-group">
+      <label>施工项目</label>
+      <input placeholder="请输入施工项目" bindinput="onInput" data-field="project" />
+    </view>
+    <view class="form-group">
+      <label>领料人</label>
+      <input placeholder="请输入领料人" bindinput="onInput" data-field="receiver" />
+    </view>
+    <view class="form-group">
+      <label>实物发货人</label>
+      <input value="张三" disabled />
+    </view>
+    <view class="form-group">
+      <label>单据数量</label>
+      <input type="number" placeholder="请输入单据数量" bindinput="onInput" data-field="documentQuantity" />
+    </view>
+    <view class="form-group">
+      <label>���接单号</label>
+      <input placeholder="请输入交接单号" bindinput="onInput" data-field="handoverNumber" />
+    </view>
+    <view class="form-group">
+      <label>发货师傅发货时间</label>
+      <input value="2024-01-21 14:30:00" disabled />
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">发货物料信息</text>
+    <view class="form-group">
+      <label>实际出库数量</label>
+      <input type="number" placeholder="请输入实际出库数量" bindinput="onInput" data-field="actualQuantity" />
+    </view>
+    <view class="form-group">
+      <label>物料类别</label>
+      <picker mode="selector" range="{{materialCategories}}" bindchange="onPickerChange" data-field="materialCategory">
+        <view class="picker">{{selectedMaterialCategory}}</view>
+      </picker>
+    </view>
+    <view class="form-group">
+      <label>发货问题备注</label>
+      <textarea placeholder="请输入备注" bindinput="onInput" data-field="remarks"></textarea>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">核查信息</text>
+    <view class="form-group">
+      <label>系统出库时间与领料单时间差是否小于24小时</label>
+      <picker mode="selector" range="{{yesNoOptions}}" bindchange="onPickerChange" data-field="timeDifference">
+        <view class="picker">{{selectedTimeDifference}}</view>
+      </picker>
+    </view>
+    <view class="form-group">
+      <label>系统出库数量与领料单数量是否一致</label>
+      <picker mode="selector" range="{{yesNoOptions}}" bindchange="onPickerChange" data-field="quantityMatch">
+        <view class="picker">{{selectedQuantityMatch}}</view>
+      </picker>
+    </view>
+    <view class="form-group">
+      <label>核查时间</label>
+      <input type="datetime-local" bindinput="onInput" data-field="checkTime" />
+    </view>
+  </view>
+
+  <view class="button-group">
+    <button bindtap="onSave">保存</button>
+    <button bindtap="onSubmit">提交</button>
+  </view>
+</view> 

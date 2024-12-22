@@ -1,0 +1,11 @@
+<view class="container">
+  <text class="title">发货流程</text>
+  <view class="task-list">
+    <!-- Example task item -->
+    <view class="task-item" wx:for="{{shippingTasks}}" wx:key="id">
+      <text>发货流水号: {{item.id}}</text>
+      <text class="status {{item.statusClass}}">状态: {{item.status}}</text>
+    </view>
+  </view>
+  <button class="fab" bindtap="addShippingTask">+</button>
+</view> 

@@ -1,0 +1,38 @@
+<view class="container">
+  <text class="title">做账员操作页面</text>
+  
+  <!-- Search Bar -->
+  <view class="search-bar">
+    <input class="search-input" placeholder="请输入流水号" bindinput="onSearchInput" />
+    <button class="search-button" bindtap="onSearch">搜索</button>
+  </view>
+  
+  <!-- Task Status Display -->
+  <view class="task-status">
+    <text class="section-title">收货流程</text>
+    <view class="task-list" wx:for="{{receivingTasks}}" wx:key="id">
+      <view class="task-item">
+        <text>收货流水号: {{item.id}}</text>
+        <text class="status {{item.statusClass}}">状态: {{item.status}}</text>
+        <button bindtap="viewTask" data-id="{{item.id}}">查看</button>
+        <button bindtap="editTask" data-id="{{item.id}}">编辑</button>
+        <button bindtap="exportLedgerB">导出台账B</button>
+      </view>
+    </view>
+    <button class="add-button" bindtap="addReceivingTask">+ 新建收货记录</button>
+  </view>
+
+  <view class="task-status">
+    <text class="section-title">发货流程</text>
+    <view class="task-list" wx:for="{{shippingTasks}}" wx:key="id">
+      <view class="task-item">
+        <text>发货流水号: {{item.id}}</text>
+        <text class="status {{item.statusClass}}">状态: {{item.status}}</text>
+        <button bindtap="viewTask" data-id="{{item.id}}">查看</button>
+        <button bindtap="editTask" data-id="{{item.id}}">编辑</button>
+        <button bindtap="exportLedgerC">导出台账C</button>
+      </view>
+    </view>
+    <button class="add-button" bindtap="addShippingTask">+ 新建发货记录</button>
+  </view>
+</view> 

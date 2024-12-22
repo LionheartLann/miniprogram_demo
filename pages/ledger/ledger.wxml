@@ -1,0 +1,5 @@
+<view class="container">
+  <text class="title">台账管理</text>
+  <!-- Add content specific to ledger management -->
+  <button class="fab" bindtap="addLedgerTask">+</button>
+</view> 

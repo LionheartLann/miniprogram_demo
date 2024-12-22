@@ -1,0 +1,36 @@
+<view class="container">
+  <text class="title">发货流程表单</text>
+  <view class="form-group" wx:for="{{fields}}" wx:key="field">
+    <label>{{item.label}}</label>
+    <input 
+      wx:if="{{item.type === 'text'}}" 
+      type="text" 
+      placeholder="{{item.placeholder}}" 
+      bindinput="onInput" 
+      data-field="{{item.field}}" 
+    />
+    <input 
+      wx:if="{{item.type === 'number'}}" 
+      type="number" 
+      placeholder="{{item.placeholder}}" 
+      bindinput="onInput" 
+      data-field="{{item.field}}" 
+    />
+    <picker 
+      wx:if="{{item.type === 'picker'}}" 
+      mode="selector" 
+      range="{{item.options}}" 
+      bindchange="onPickerChange" 
+      data-field="{{item.field}}"
+    >
+      <view class="picker">{{item.selected}}</view>
+    </picker>
+    <textarea 
+      wx:if="{{item.type === 'textarea'}}" 
+      placeholder="{{item.placeholder}}" 
+      bindinput="onInput" 
+      data-field="{{item.field}}"
+    ></textarea>
+  </view>
+  <button bindtap="onSubmit">提交</button>
+</view> 

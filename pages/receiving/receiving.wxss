@@ -1,0 +1,47 @@
+.container {
+  padding: 20px;
+  position: relative;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.task-list {
+  margin-bottom: 20px;
+}
+
+.task-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #007aff;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  font-size: 24px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 320px) {
+  .title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 28px;
+  }
+} 
