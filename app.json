@@ -11,6 +11,8 @@
     "pages/shippingStaffOperation/shippingStaffOperation",
     "pages/receivingStaffForm/receivingStaffForm",
     "pages/receivingStaffOperation/receivingStaffOperation",
+    "pages/warehouseStaffForm/warehouseStaffForm",
+    "pages/warehouseStaffOperation/warehouseStaffOperation",
     "pages/shippingCreationForm/shippingCreationForm"
   ],
   "window": {

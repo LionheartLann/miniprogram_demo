@@ -1,0 +1,11 @@
+/* 复用做账员操作页样式 */
+@import "../accountantOperation/accountantOperation.wxss";
+
+/* 仓管员特有样式 */
+.export-button {
+  background-color: #34c759 !important;
+}
+
+.detail-row .detail-label {
+  min-width: 100px;
+} 

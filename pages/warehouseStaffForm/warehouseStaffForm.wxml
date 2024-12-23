@@ -1,0 +1,53 @@
+<view class="page-header">
+  <view class="page-title">仓库管理</view>
+  <view class="tab-bar">
+    <view class="tab {{isShippingSelected ? 'selected' : ''}}" 
+          bindtap="switchTab" 
+          data-type="shipping">
+      发货单
+    </view>
+    <view class="tab {{isReceivingSelected ? 'selected' : ''}}" 
+          bindtap="switchTab" 
+          data-type="receiving">
+      收货单
+    </view>
+  </view>
+  <view class="action-bar">
+    <view class="search-bar">
+      <input class="search-input" placeholder="输入流水号" bindinput="onSearchInput" />
+      <button class="search-button" bindtap="onSearch">搜索</button>
+    </view>
+    <button class="export-button" bindtap="exportData">导出</button>
+  </view>
+</view>
+
+<scroll-view class="table-container" scroll-x="true" scroll-y="true">
+  <view class="table">
+    <view class="table-row table-header">
+      <text class="table-cell">流水号</text>
+      <text class="table-cell">状态</text>
+    </view>
+    <block wx:for="{{orders}}" wx:key="serialNumber">
+      <view class="table-row {{getStatusClass(item.status)}}" 
+            bindtap="navigateToDetails" 
+            data-id="{{item.serialNumber}}">
+        <text class="table-cell">{{item.serialNumber}}</text>
+        <text class="table-cell status-tag {{getStatusTagClass(item.status)}}">
+          {{item.status}}
+        </text>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+
+<!-- Pagination Controls -->
+<view class="pagination-bar">
+  <button bindtap="onPrevPage">上一页</button>
+  <text>第 {{currentPage}} 页 / 共 {{totalPages}} 页</text>
+  <button bindtap="onNextPage">下一页</button>
+</view>
+<view class="goto-page">
+  <text>跳转到:</text>
+  <input type="number" class="goto-input" bindinput="onPageInput" />
+  <button bindtap="onGoPage">Go</button>
+</view> 

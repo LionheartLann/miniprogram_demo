@@ -33,7 +33,18 @@ Page({
       });
     } else if (role === '仓管员') {
       wx.navigateTo({
-        url: '/pages/warehouse/warehouse'
+        url: '/pages/warehouseStaffForm/warehouseStaffForm',
+        success: () => {
+          // 存储角色信息到本地
+          wx.setStorageSync('userRole', role);
+        },
+        fail: (error) => {
+          console.error('Navigation failed:', error);
+          wx.showToast({
+            title: '页面跳转失败',
+            icon: 'none'
+          });
+        }
       });
     }
   },
