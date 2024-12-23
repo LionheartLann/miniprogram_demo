@@ -65,8 +65,20 @@ Page({
   },
 
   navigateBack() {
-    wx.navigateBack({
-      delta: 1
+    wx.navigateBack();
+  },
+
+  // 跳转到角色管理
+  navigateToRoleManagement() {
+    wx.navigateTo({
+      url: '/pages/systemManagement/roleManagement/roleManagement'
+    });
+  },
+
+  // 跳转到用户管理
+  navigateToUserManagement() {
+    wx.navigateTo({
+      url: '/pages/systemManagement/userManagement/userManagement'
     });
   }
 })

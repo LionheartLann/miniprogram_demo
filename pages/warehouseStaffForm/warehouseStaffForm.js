@@ -36,7 +36,14 @@ Page({
 
     if (isSystem) {
       wx.navigateTo({
-        url: '/pages/systemManagement/systemManagement'
+        url: '/pages/systemManagement/systemManagement/systemManagement',
+        fail: (err) => {
+          console.error('导航失败：', err);
+          wx.showToast({
+            title: '页面跳转失败',
+            icon: 'none'
+          });
+        }
       });
       return;
     }

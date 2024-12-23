@@ -3,6 +3,9 @@
     "pages/roleSelection/roleSelection",
     "pages/shipment/shipment",
     "pages/receiving/receiving",
+    "pages/systemManagement/systemManagement/systemManagement",
+    "pages/systemManagement/roleManagement/roleManagement",
+    "pages/systemManagement/userManagement/userManagement",
     "pages/shippingInspectionForm/shippingInspectionForm",
     "pages/receivingInspectionForm/receivingInspectionForm",
     "pages/accountantOperation/accountantOperation",
@@ -13,10 +16,6 @@
     "pages/receivingStaffOperation/receivingStaffOperation",
     "pages/warehouseStaffForm/warehouseStaffForm",
     "pages/warehouseStaffOperation/warehouseStaffOperation",
-    "pages/systemManagement/systemManagement",
-    "pages/systemManagement/roleManagement/roleManagement",
-    "pages/systemManagement/userManagement/userManagement",
-    "pages/systemManagement/permissionManagement/permissionManagement",
     "pages/shippingCreationForm/shippingCreationForm"
   ],
   "window": {
