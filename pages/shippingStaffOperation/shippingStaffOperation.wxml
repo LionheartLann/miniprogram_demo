@@ -1,0 +1,104 @@
+<view class="container">
+  <view class="page-title">发货单详情</view>
+
+  <view class="detail-card">
+    <!-- 基本信息 -->
+    <view class="section-title">基本信息</view>
+    <view class="detail-group">
+      <view class="detail-row">
+        <text class="detail-label">流水号</text>
+        <text class="detail-content">{{formData.serialNumber}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">状态</text>
+        <text class="detail-content status-tag {{formData.status === '待发货' ? 'status-pending' : 'status-completed'}}">
+          {{formData.status}}
+        </text>
+      </view>
+    </view>
+
+    <!-- 发货信息 -->
+    <view class="section-title">发货信息</view>
+    <view class="detail-group">
+      <view class="detail-row">
+        <text class="detail-label">实际发货数量</text>
+        <block wx:if="{{isEditing && isFieldEditable('actualQuantity')}}">
+          <input class="detail-input" 
+                 type="number"
+                 value="{{formData.actualQuantity}}"
+                 data-field="actualQuantity"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.actualQuantity}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">物料状态</text>
+        <block wx:if="{{isEditing && isFieldEditable('materialStatus')}}">
+          <input class="detail-input" 
+                 value="{{formData.materialStatus}}"
+                 data-field="materialStatus"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.materialStatus}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">是否包装</text>
+        <block wx:if="{{isEditing && isFieldEditable('isPackaged')}}">
+          <input class="detail-input" 
+                 value="{{formData.isPackaged}}"
+                 data-field="isPackaged"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.isPackaged}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">运输方式</text>
+        <block wx:if="{{isEditing && isFieldEditable('transportMethod')}}">
+          <input class="detail-input" 
+                 value="{{formData.transportMethod}}"
+                 data-field="transportMethod"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.transportMethod}}</text>
+        </block>
+      </view>
+    </view>
+
+    <!-- 备注信息 -->
+    <view class="section-title">备注信息</view>
+    <view class="detail-group">
+      <view class="detail-row vertical">
+        <text class="detail-label">发货备注</text>
+        <block wx:if="{{isEditing && isFieldEditable('shippingRemarks')}}">
+          <textarea class="detail-textarea" 
+                    value="{{formData.shippingRemarks}}"
+                    data-field="shippingRemarks"
+                    bindinput="onInputChange"
+                    placeholder="请输入发货备注" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.shippingRemarks || '无'}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="bottom-buttons">
+  <button class="bottom-button edit-button" bindtap="toggleEdit">
+    {{isEditing ? '取消' : '编辑'}}
+  </button>
+  <button class="bottom-button save-button" bindtap="saveChanges" wx:if="{{isEditing}}">
+    保存
+  </button>
+</view> 

@@ -25,7 +25,7 @@ Page({
       });
     } else if (role === '发货师傅') {
       wx.navigateTo({
-        url: '/pages/shipment/shipment'
+        url: '/pages/shippingStaffForm/shippingStaffForm'
       });
     } else if (role === '接车师傅') {
       wx.navigateTo({

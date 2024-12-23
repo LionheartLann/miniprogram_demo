@@ -1,0 +1,4 @@
+/* pages/shippingStaffForm/shippingStaffForm.wxss */
+
+/* 复用发货检查表样式 */
+@import "../shippingInspectionForm/shippingInspectionForm.wxss";

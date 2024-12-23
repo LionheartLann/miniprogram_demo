@@ -7,6 +7,8 @@
     "pages/receivingInspectionForm/receivingInspectionForm",
     "pages/accountantOperation/accountantOperation",
     "pages/receivingOperation/receivingOperation",
+    "pages/shippingStaffForm/shippingStaffForm",
+    "pages/shippingStaffOperation/shippingStaffOperation",
     "pages/shippingCreationForm/shippingCreationForm"
   ],
   "window": {
