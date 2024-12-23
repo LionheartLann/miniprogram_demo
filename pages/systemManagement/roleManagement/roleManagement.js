@@ -26,7 +26,7 @@ Page({
       },
       {
         id: 'receivingStaff',
-        name: '收货员',
+        name: '收货师傅',
         pages: [
           { id: 5, name: '收货表单', path: '/pages/receivingStaffForm/receivingStaffForm', enabled: true },
           { id: 6, name: '收货操作', path: '/pages/receivingStaffOperation/receivingStaffOperation', enabled: true },
@@ -35,7 +35,7 @@ Page({
       },
       {
         id: 'shippingStaff',
-        name: '发货员',
+        name: '发货师傅',
         pages: [
           { id: 8, name: '发货表单', path: '/pages/shippingStaffForm/shippingStaffForm', enabled: true },
           { id: 9, name: '发货操作', path: '/pages/shippingStaffOperation/shippingStaffOperation', enabled: true },
@@ -46,7 +46,9 @@ Page({
         id: 'accountant',
         name: '做账员',
         pages: [
-          { id: 11, name: '做账操作', path: '/pages/accountantOperation/accountantOperation', enabled: true }
+          { id: 11, name: '做账操作', path: '/pages/accountantOperation/accountantOperation', enabled: true },
+          { id: 12, name: '收货检查', path: '/pages/receivingInspectionForm/receivingInspectionForm', enabled: true },
+          { id: 13, name: '发货检查', path: '/pages/shippingInspectionForm/shippingInspectionForm', enabled: true }
         ]
       }
     ]
