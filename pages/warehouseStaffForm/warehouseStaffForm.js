@@ -55,21 +55,6 @@ Page({
     });
   },
 
-  // 导出功能
-  exportData() {
-    wx.showLoading({
-      title: '导出中...'
-    });
-
-    setTimeout(() => {
-      wx.hideLoading();
-      wx.showToast({
-        title: '导出成功',
-        icon: 'success'
-      });
-    }, 1500);
-  },
-
   onSearchInput(e) {
     this.setData({ searchQuery: e.detail.value });
   },

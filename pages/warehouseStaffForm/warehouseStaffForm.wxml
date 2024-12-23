@@ -5,7 +5,6 @@
       <input class="search-input" placeholder="输入流水号" bindinput="onSearchInput" />
       <button class="search-button" bindtap="onSearch">搜索</button>
     </view>
-    <button class="export-button" bindtap="exportData">导出</button>
   </view>
 </view>
 
