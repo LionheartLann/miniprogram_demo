@@ -1,0 +1,18 @@
+.fab-wrapper {
+position: fixed;
+bottom: 80rpx;
+right: 40rpx;
+width: 100rpx;
+height: 100rpx;
+border-radius: 50%;
+background-color: #007aff;
+display: flex;
+justify-content: center;
+align-items: center;
+box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.3);
+}
+.fab-plus {
+color: #fff;
+font-size: 60rpx;
+line-height: 70rpx;
+}

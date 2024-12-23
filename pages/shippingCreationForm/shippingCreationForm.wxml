@@ -1,0 +1,23 @@
+<view class="container">
+<view class="form-group">
+<label>领料单位</label>
+<input placeholder="输入领料单位" bindinput="onInput" data-field="receivingUnit" />
+</view>
+<view class="form-group">
+<label>施工项目</label>
+<input placeholder="输入施工项目" bindinput="onInput" data-field="project" />
+</view>
+<view class="form-group">
+<label>实际出库数量</label>
+<input placeholder="输入数量" bindinput="onInput" data-field="actualQuantity" />
+</view>
+<view class="form-group">
+<label>物料类别</label>
+<input placeholder="可手动或搜索" bindinput="onInput" data-field="materialCategory" />
+</view>
+<view class="form-group">
+<label>发货问题备注</label>
+<textarea placeholder="如有异常..." bindinput="onInput" data-field="issueRemarks"></textarea>
+</view>
+<button class="submit-button" bindtap="onSubmit">提交发货流程</button>
+</view>

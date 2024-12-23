@@ -1,0 +1,3 @@
+<view class="fab-wrapper" catchtap="onFabTap">
+<text class="fab-plus">+</text>
+</view>

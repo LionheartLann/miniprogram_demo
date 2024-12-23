@@ -1,18 +1,33 @@
 // pages/shippingInspectionForm/shippingInspectionForm.js
+import { getShippingData } from '../../utils/dataService'; // <-- import the utility
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    searchQuery: '',
+    allOrders: [],  // store all 100 items here
+    orders: [],     // store only the current page’s items
+    currentPage: 1,
+    totalPages: 5,
+    typedPage: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    const fullData = getShippingData();
+    this.setData({
+      allOrders: fullData
+    });
+    // Suppose we use a page size of 10 => totalPages = 100 / 10
+    this.setData({
+      totalPages: Math.ceil(fullData.length / 10)
+    });
+    this.loadData();
   },
 
   /**
@@ -64,9 +79,104 @@ Page({
 
   },
 
+  onSearchInput(e) {
+    this.setData({
+      searchQuery: e.detail.value
+    });
+  },
+
+  onSearch() {
+    const { searchQuery } = this.data;
+    if (searchQuery) {
+      // Implement search logic here
+      wx.showToast({
+        title: `搜索: ${searchQuery}`,
+        icon: 'none'
+      });
+    } else {
+      wx.showToast({
+        title: '请输入流水号',
+        icon: 'none'
+      });
+    }
+  },
+
   navigateToDetails() {
     wx.navigateTo({
       url: '/pages/accountantOperation/accountantOperation'
+    });
+  },
+
+  navigateToShipping() {
+    wx.navigateTo({
+      url: '/pages/shippingInspectionForm/shippingInspectionForm'
+    });
+  },
+
+  navigateToReceiving() {
+    wx.navigateTo({
+      url: '/pages/receivingInspectionForm/receivingInspectionForm'
+    });
+  },
+  onFabTap() {
+    // Navigate to the shipping creation form page
+    wx.navigateTo({
+      url: '/pages/shippingCreationForm/shippingCreationForm'
+    });
+  },
+
+  getStatusClass(status) {
+    switch (status) {
+      case '待发货':
+        return 'status-pending';
+      case '已发货':
+        return 'status-shipped';
+      case '发货中':
+        return 'status-in-transit';
+      case '发货完成':
+        return 'status-completed';
+      case '发货异常':
+        return 'status-error';
+      default:
+        return '';
+    }
+  },
+
+  onPrevPage() {
+    if (this.data.currentPage > 1) {
+      this.setData({ currentPage: this.data.currentPage - 1 });
+      this.loadData();
+    }
+  },
+  onNextPage() {
+    if (this.data.currentPage < this.data.totalPages) {
+      this.setData({ currentPage: this.data.currentPage + 1 });
+      this.loadData();
+    }
+  },
+  onPageInput(e) {
+    this.setData({ typedPage: e.detail.value });
+  },
+  onGoPage() {
+    const page = parseInt(this.data.typedPage, 10);
+    if (page && page >= 1 && page <= this.data.totalPages) {
+      this.setData({ currentPage: page });
+      this.loadData();
+    } else {
+      wx.showToast({
+        title: '页数超出范围',
+        icon: 'none'
+      });
+    }
+  },
+  loadData() {
+    // For example, page size = 10
+    const pageSize = 10;
+    const startIndex = (this.data.currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const pageItems = this.data.allOrders.slice(startIndex, endIndex);
+    this.setData({
+      orders: pageItems
     });
   }
 })

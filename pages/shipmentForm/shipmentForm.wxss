@@ -34,4 +34,53 @@ button {
   border: none;
   border-radius: 5px;
   font-size: 18px;
+}
+
+.table-container {
+  width: 100%;
+  height: calc(100vh - 50px);
+  padding-top: env(safe-area-inset-top);
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.table-row {
+  display: flex;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.table-header {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.table-cell {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.nav-button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  text-align: center;
 } 

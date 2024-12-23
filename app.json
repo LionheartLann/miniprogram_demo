@@ -8,7 +8,8 @@
     "pages/receiving/receiving",
     "pages/shipping/shipping",
     "pages/shippingInspectionForm/shippingInspectionForm",
-    "pages/receivingInspectionForm/receivingInspectionForm"
+    "pages/receivingInspectionForm/receivingInspectionForm",
+    "pages/shippingCreationForm/shippingCreationForm"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
