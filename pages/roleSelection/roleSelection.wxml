@@ -1,9 +1,65 @@
 <view class="container">
-  <text class="title">请选择您的角色</text>
-  <view class="role-list">
-    <button class="role-button" bindtap="selectRole" data-role="做账员">做账员</button>
-    <button class="role-button" bindtap="selectRole" data-role="发货师傅">发货师傅</button>
-    <button class="role-button" bindtap="selectRole" data-role="接车师傅">接车师傅</button>
-    <button class="role-button" bindtap="selectRole" data-role="仓管员">仓管员</button>
+  <view class="page-header">
+    <text class="page-title">选择角色</text>
+  </view>
+  
+  <view class="role-card">
+    <view class="role-section">
+      <button class="role-button" 
+              hover-class="button-hover" 
+              bindtap="onSelectRole" 
+              data-role="做账员">
+        <view class="button-content">
+          <image class="role-icon" src="/images/accountant_icon.png" mode="aspectFit"></image>
+          <view class="text-content">
+            <text class="role-name">做账员</text>
+            <text class="role-description">负责处理账务相关工作，包括出入库单据的审核与记账</text>
+          </view>
+        </view>
+        <view class="arrow-icon"></view>
+      </button>
+      
+      <button class="role-button" 
+              hover-class="button-hover" 
+              bindtap="onSelectRole" 
+              data-role="发货师傅">
+        <view class="button-content">
+          <image class="role-icon" src="/images/shipping_icon.png" mode="aspectFit"></image>
+          <view class="text-content">
+            <text class="role-name">发货师傅</text>
+            <text class="role-description">负责物料的发货管理，确保物料准确发出</text>
+          </view>
+        </view>
+        <view class="arrow-icon"></view>
+      </button>
+      
+      <button class="role-button" 
+              hover-class="button-hover" 
+              bindtap="onSelectRole" 
+              data-role="接车师傅">
+        <view class="button-content">
+          <image class="role-icon" src="/images/receiving_icon.png" mode="aspectFit"></image>
+          <view class="text-content">
+            <text class="role-name">接车师傅</text>
+            <text class="role-description">负责物料的接收和入库，确保物料准确入库</text>
+          </view>
+        </view>
+        <view class="arrow-icon"></view>
+      </button>
+      
+      <button class="role-button" 
+              hover-class="button-hover" 
+              bindtap="onSelectRole" 
+              data-role="仓管员">
+        <view class="button-content">
+          <image class="role-icon" src="/images/warehouse_icon.png" mode="aspectFit"></image>
+          <view class="text-content">
+            <text class="role-name">仓库管理员</text>
+            <text class="role-description">负责仓库的整体管理，监督出入库流程</text>
+          </view>
+        </view>
+        <view class="arrow-icon"></view>
+      </button>
+    </view>
   </view>
 </view> 
