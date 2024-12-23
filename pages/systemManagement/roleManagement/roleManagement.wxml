@@ -1,53 +1,83 @@
 <view class="container">
+  <!-- 自定义导航栏 -->
   <view class="custom-nav">
-    <view class="nav-title">角色管理</view>
+    <view class="nav-back" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="nav-title">角色权限管理</view>
   </view>
 
-  <view class="role-list">
+  <!-- 角色列表 -->
+  <scroll-view class="role-list" scroll-y>
     <block wx:for="{{roles}}" wx:key="id">
-      <view class="role-card">
+      <view class="role-section">
         <view class="role-header">
-          <view class="role-title">
-            <text class="role-name">{{item.name}}</text>
-            <text class="role-tag {{item.status === 'active' ? 'tag-active' : 'tag-inactive'}}">
-              {{item.status === 'active' ? '启用' : '禁用'}}
-            </text>
-          </view>
-          <view class="role-stats">
-            <text class="stats-item">用户数：{{item.userCount}}</text>
-            <text class="stats-item">权限数：{{item.permissionCount}}</text>
-          </view>
+          <text class="role-name">{{item.name}}</text>
+          <text class="page-count">{{item.pages.length}}个页面权限</text>
         </view>
-
-        <view class="role-content">
-          <text class="role-description">{{item.description}}</text>
-          <text class="role-time">创建时间：{{item.createTime}}</text>
-        </view>
-
-        <view class="role-footer">
-          <button class="action-button" 
-                  bindtap="toggleRoleStatus" 
-                  data-id="{{item.id}}"
-                  data-status="{{item.status}}">
-            {{item.status === 'active' ? '禁用' : '启用'}}
-          </button>
-          <button class="action-button" 
-                  bindtap="managePermissions" 
-                  data-id="{{item.id}}">
-            权限配置
-          </button>
-          <button class="action-button warning" 
-                  bindtap="deleteRole" 
-                  data-id="{{item.id}}">
-            删除
-          </button>
+        
+        <!-- 页面权限列表 -->
+        <view class="pages-list">
+          <view class="page-item" wx:for="{{item.pages}}" wx:key="id" wx:for-item="page">
+            <view class="page-info">
+              <text class="page-name">{{page.name}}</text>
+              <text class="page-path">{{page.path}}</text>
+            </view>
+            <switch class="permission-switch" 
+                    checked="{{page.enabled}}" 
+                    bindchange="togglePermission" 
+                    data-role-id="{{item.id}}" 
+                    data-page-id="{{page.id}}" />
+          </view>
+          <!-- 添加页面权限按钮 -->
+          <view class="add-page-item" bindtap="showAddPageModal" data-role-id="{{item.id}}">
+            <text class="add-icon">+</text>
+            <text class="add-text">添加页面权限</text>
+          </view>
         </view>
       </view>
     </block>
+  </scroll-view>
+
+  <!-- 保存按钮 -->
+  <view class="footer-button">
+    <button class="save-button" bindtap="savePermissions">
+      保存修改
+    </button>
   </view>
 
-  <button class="add-button" bindtap="showAddRoleModal">
-    <text class="add-icon">+</text>
-    <text>新增角色</text>
-  </button>
+  <!-- 添加页面权限弹窗 -->
+  <view class="modal" wx:if="{{showModal}}">
+    <view class="modal-mask" bindtap="hideModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">添加页面权限</text>
+      </view>
+      <view class="modal-body">
+        <view class="input-group">
+          <text class="input-label">页面名称</text>
+          <input class="input-field" 
+                 placeholder="请输入页面名称" 
+                 value="{{newPage.name}}"
+                 bindinput="onPageNameInput"/>
+        </view>
+        <view class="input-group">
+          <text class="input-label">页面路径</text>
+          <picker class="path-picker" 
+                  bindchange="onPathSelect" 
+                  value="{{pathIndex}}" 
+                  range="{{availablePaths}}" 
+                  range-key="name">
+            <view class="picker-content">
+              {{pathIndex > -1 ? availablePaths[pathIndex].name : '请选择页面路径'}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="modal-btn cancel" bindtap="hideModal">取消</button>
+        <button class="modal-btn confirm" bindtap="confirmAddPage">确定</button>
+      </view>
+    </view>
+  </view>
 </view> 
