@@ -1,0 +1,2 @@
+/* 复用收货检查表样式 */
+@import "../receivingInspectionForm/receivingInspectionForm.wxss"; 

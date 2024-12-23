@@ -29,7 +29,7 @@ Page({
       });
     } else if (role === '接车师傅') {
       wx.navigateTo({
-        url: '/pages/receiving/receiving'
+        url: '/pages/receivingStaffForm/receivingStaffForm'
       });
     } else if (role === '仓管员') {
       wx.navigateTo({

@@ -1,0 +1,125 @@
+<view class="container">
+  <view class="page-title">收货单详情</view>
+
+  <view class="detail-card">
+    <!-- 基本信息 -->
+    <view class="section-title">基本信息</view>
+    <view class="detail-group">
+      <view class="detail-row">
+        <text class="detail-label">流水号</text>
+        <text class="detail-content">{{formData.serialNumber}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">状态</text>
+        <text class="detail-content status-tag {{formData.status === '待收货' ? 'status-pending' : 'status-completed'}}">
+          {{formData.status}}
+        </text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">供应商</text>
+        <text class="detail-content">{{formData.supplier}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">订单编号</text>
+        <text class="detail-content">{{formData.orderNumber}}</text>
+      </view>
+    </view>
+
+    <!-- 收货信息 -->
+    <view class="section-title">收货信息</view>
+    <view class="detail-group">
+      <view class="detail-row">
+        <text class="detail-label">实际收货数量</text>
+        <block wx:if="{{isEditing && isFieldEditable('actualQuantity')}}">
+          <input class="detail-input" 
+                 type="number"
+                 value="{{formData.actualQuantity}}"
+                 data-field="actualQuantity"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.actualQuantity}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">物料状态</text>
+        <block wx:if="{{isEditing && isFieldEditable('materialStatus')}}">
+          <input class="detail-input" 
+                 value="{{formData.materialStatus}}"
+                 data-field="materialStatus"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.materialStatus}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">质量状态</text>
+        <block wx:if="{{isEditing && isFieldEditable('qualityStatus')}}">
+          <input class="detail-input" 
+                 value="{{formData.qualityStatus}}"
+                 data-field="qualityStatus"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.qualityStatus}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">是否入库</text>
+        <block wx:if="{{isEditing && isFieldEditable('isStored')}}">
+          <input class="detail-input" 
+                 value="{{formData.isStored}}"
+                 data-field="isStored"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.isStored}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">存放位置</text>
+        <block wx:if="{{isEditing && isFieldEditable('storageLocation')}}">
+          <input class="detail-input" 
+                 value="{{formData.storageLocation}}"
+                 data-field="storageLocation"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.storageLocation}}</text>
+        </block>
+      </view>
+    </view>
+
+    <!-- 备注信息 -->
+    <view class="section-title">备注信息</view>
+    <view class="detail-group">
+      <view class="detail-row vertical">
+        <text class="detail-label">收货备注</text>
+        <block wx:if="{{isEditing && isFieldEditable('receivingRemarks')}}">
+          <textarea class="detail-textarea" 
+                    value="{{formData.receivingRemarks}}"
+                    data-field="receivingRemarks"
+                    bindinput="onInputChange"
+                    placeholder="请输入收货备注" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.receivingRemarks || '无'}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="bottom-buttons">
+  <button class="bottom-button edit-button" bindtap="toggleEdit">
+    {{isEditing ? '取消' : '编辑'}}
+  </button>
+  <button class="bottom-button save-button" bindtap="saveChanges" wx:if="{{isEditing}}">
+    保存
+  </button>
+</view> 

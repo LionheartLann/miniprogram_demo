@@ -9,6 +9,8 @@
     "pages/receivingOperation/receivingOperation",
     "pages/shippingStaffForm/shippingStaffForm",
     "pages/shippingStaffOperation/shippingStaffOperation",
+    "pages/receivingStaffForm/receivingStaffForm",
+    "pages/receivingStaffOperation/receivingStaffOperation",
     "pages/shippingCreationForm/shippingCreationForm"
   ],
   "window": {

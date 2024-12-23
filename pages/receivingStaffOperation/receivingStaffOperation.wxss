@@ -1,0 +1,2 @@
+/* 复用做账员操作页样式 */
+@import "../accountantOperation/accountantOperation.wxss"; 
