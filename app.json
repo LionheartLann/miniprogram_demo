@@ -13,6 +13,10 @@
     "pages/receivingStaffOperation/receivingStaffOperation",
     "pages/warehouseStaffForm/warehouseStaffForm",
     "pages/warehouseStaffOperation/warehouseStaffOperation",
+    "pages/systemManagement/systemManagement",
+    "pages/systemManagement/roleManagement/roleManagement",
+    "pages/systemManagement/userManagement/userManagement",
+    "pages/systemManagement/permissionManagement/permissionManagement",
     "pages/shippingCreationForm/shippingCreationForm"
   ],
   "window": {

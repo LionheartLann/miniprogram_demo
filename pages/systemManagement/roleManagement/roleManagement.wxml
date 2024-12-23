@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="custom-nav">
+    <view class="nav-title">角色管理</view>
+  </view>
+
+  <view class="role-list">
+    <block wx:for="{{roles}}" wx:key="id">
+      <view class="role-card">
+        <view class="role-header">
+          <view class="role-title">
+            <text class="role-name">{{item.name}}</text>
+            <text class="role-tag {{item.status === 'active' ? 'tag-active' : 'tag-inactive'}}">
+              {{item.status === 'active' ? '启用' : '禁用'}}
+            </text>
+          </view>
+          <view class="role-stats">
+            <text class="stats-item">用户数：{{item.userCount}}</text>
+            <text class="stats-item">权限数：{{item.permissionCount}}</text>
+          </view>
+        </view>
+
+        <view class="role-content">
+          <text class="role-description">{{item.description}}</text>
+          <text class="role-time">创建时间：{{item.createTime}}</text>
+        </view>
+
+        <view class="role-footer">
+          <button class="action-button" 
+                  bindtap="toggleRoleStatus" 
+                  data-id="{{item.id}}"
+                  data-status="{{item.status}}">
+            {{item.status === 'active' ? '禁用' : '启用'}}
+          </button>
+          <button class="action-button" 
+                  bindtap="managePermissions" 
+                  data-id="{{item.id}}">
+            权限配置
+          </button>
+          <button class="action-button warning" 
+                  bindtap="deleteRole" 
+                  data-id="{{item.id}}">
+            删除
+          </button>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <button class="add-button" bindtap="showAddRoleModal">
+    <text class="add-icon">+</text>
+    <text>新增角色</text>
+  </button>
+</view> 

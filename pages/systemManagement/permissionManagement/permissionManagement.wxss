@@ -1,0 +1,73 @@
+/* pages/systemManagement/permissionManagement/permissionManagement.wxss */
+.container {
+  padding: 16px;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.permission-list {
+  margin-bottom: 16px;
+}
+
+.permission-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.operation-button {
+  min-width: 60px;
+  font-size: 14px;
+  padding: 4px 8px;
+  margin: 0;
+  background-color: #007aff;
+  color: #fff;
+}
+
+.operation-button.delete {
+  background-color: #ff3b30;
+}
+
+.add-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007aff;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.custom-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 88px;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 16px 8px;
+  border-bottom: 1px solid #e5e5ea;
+  z-index: 100;
+}
+
+.nav-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.container {
+  padding-top: 104px;
+  padding: 16px;
+}

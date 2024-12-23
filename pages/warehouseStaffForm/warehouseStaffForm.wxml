@@ -53,4 +53,10 @@
     <image class="tab-icon" src="/images/image_placeholder.png" mode="aspectFit"></image>
     <text class="tab-text">收货单</text>
   </view>
+  <view class="tab-item {{isSystemSelected ? 'active' : ''}}" 
+        bindtap="switchTab" 
+        data-type="system">
+    <image class="tab-icon" src="/images/system_icon.png" mode="aspectFit"></image>
+    <text class="tab-text">系统管理</text>
+  </view>
 </view> 

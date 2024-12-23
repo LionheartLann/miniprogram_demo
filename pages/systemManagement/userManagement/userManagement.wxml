@@ -1,0 +1,18 @@
+<!--pages/systemManagement/userManagement/userManagement.wxml-->
+<view class="container">
+  <view class="custom-nav">
+    <view class="nav-title">用户管理</view>
+  </view>
+  <view class="user-list">
+    <block wx:for="{{users}}" wx:key="id">
+      <view class="user-item">
+        <text>{{item.name}}</text>
+        <view class="button-group">
+          <button class="operation-button" bindtap="editUser" data-id="{{item.id}}">编辑</button>
+          <button class="operation-button delete" bindtap="deleteUser" data-id="{{item.id}}">删除</button>
+        </view>
+      </view>
+    </block>
+  </view>
+  <button class="add-button" bindtap="addUser">添加用户</button>
+</view>

@@ -1,0 +1,18 @@
+<!--pages/systemManagement/permissionManagement/permissionManagement.wxml-->
+<view class="container">
+  <view class="custom-nav">
+    <view class="nav-title">权限管理</view>
+  </view>
+  <view class="permission-list">
+    <block wx:for="{{permissions}}" wx:key="id">
+      <view class="permission-item">
+        <text>{{item.name}}</text>
+        <view class="button-group">
+          <button class="operation-button" bindtap="editPermission" data-id="{{item.id}}">编辑</button>
+          <button class="operation-button delete" bindtap="deletePermission" data-id="{{item.id}}">删除</button>
+        </view>
+      </view>
+    </block>
+  </view>
+  <button class="add-button" bindtap="addPermission">添加权限</button>
+</view>

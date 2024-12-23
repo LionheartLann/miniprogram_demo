@@ -31,11 +31,22 @@ Page({
   switchTab(e) {
     const type = e.currentTarget.dataset.type;
     const isShipping = type === 'shipping';
+    const isReceiving = type === 'receiving';
+    const isSystem = type === 'system';
+
+    if (isSystem) {
+      wx.navigateTo({
+        url: '/pages/systemManagement/systemManagement'
+      });
+      return;
+    }
+
     const orders = isShipping ? this.data.shippingOrders : this.data.receivingOrders;
     
     this.setData({
       isShippingSelected: isShipping,
-      isReceivingSelected: !isShipping,
+      isReceivingSelected: isReceiving,
+      isSystemSelected: isSystem,
       allOrders: orders,
       orders: orders.slice(0, 10),
       currentPage: 1,

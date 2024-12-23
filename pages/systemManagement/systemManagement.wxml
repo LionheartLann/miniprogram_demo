@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="page-title">系统管理</view>
+  <view class="management-list">
+    <button class="management-button" bindtap="navigateToRoleManagement">角色管理</button>
+    <button class="management-button" bindtap="navigateToUserManagement">用户管理</button>
+    <button class="management-button" bindtap="navigateToPermissionManagement">权限管理</button>
+  </view>
+</view> 

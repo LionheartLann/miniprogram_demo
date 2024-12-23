@@ -1,0 +1,185 @@
+/* iOS 风格的自定义导航栏 */
+.custom-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 88px;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 16px 12px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.nav-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+
+/* 容器样式 */
+.container {
+  padding: 88px 12px 80px;
+  background-color: #f2f2f7;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 角色列表样式 */
+.role-list {
+  padding-bottom: 24px;
+}
+
+/* 角色卡片样式 */
+.role-card {
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.role-header {
+  margin-bottom: 10px;
+}
+
+.role-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.role-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+}
+
+.role-tag {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+
+.tag-active {
+  background-color: #34c759;
+  color: #fff;
+}
+
+.tag-inactive {
+  background-color: #8e8e93;
+  color: #fff;
+}
+
+.role-stats {
+  display: flex;
+  gap: 12px;
+}
+
+.stats-item {
+  font-size: 12px;
+  color: #8e8e93;
+}
+
+.role-content {
+  padding: 8px 0;
+  border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+  margin: 8px 0;
+}
+
+.role-description {
+  font-size: 13px;
+  color: #48484a;
+  margin-bottom: 6px;
+  display: block;
+  line-height: 1.4;
+}
+
+.role-time {
+  font-size: 12px;
+  color: #8e8e93;
+  display: block;
+}
+
+.role-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+/* 操作按钮样式 */
+.action-button {
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #007aff;
+  color: #fff;
+  border: none;
+  min-width: 64px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.action-button::after {
+  border: none;
+}
+
+.action-button.warning {
+  background-color: #ff3b30;
+}
+
+/* 添加按钮样式 */
+.add-button {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007aff;
+  color: #fff;
+  border-radius: 25px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+  font-size: 14px;
+  z-index: 99;
+}
+
+.add-button::after {
+  border: none;
+}
+
+.add-icon {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* 适配 iPhone 安全区域 */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .container {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+  
+  .add-button {
+    bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+}
+
+/* 按钮点击态样式 */
+.action-button:active {
+  opacity: 0.8;
+}
+
+.add-button:active {
+  transform: translateX(-50%) scale(0.98);
+  opacity: 0.9;
+} 
