@@ -67,7 +67,7 @@ Page({
   },
 
   /**
-   * 页面上拉触底事件的处理函数
+   * 页面上拉���底事件的处理函数
    */
   onReachBottom() {
 
@@ -89,7 +89,6 @@ Page({
   onSearch() {
     const { searchQuery } = this.data;
     if (searchQuery) {
-      // Implement search logic here
       wx.showToast({
         title: `搜索: ${searchQuery}`,
         icon: 'none'
