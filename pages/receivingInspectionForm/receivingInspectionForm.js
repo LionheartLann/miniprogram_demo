@@ -12,7 +12,9 @@ Page({
     orders: [],
     currentPage: 1,
     totalPages: 5,
-    typedPage: ''
+    typedPage: '',
+    isShippingSelected: false,
+    isReceivingSelected: true
   },
 
   /**
@@ -107,12 +109,20 @@ Page({
   },
 
   navigateToShipping() {
+    this.setData({
+      isShippingSelected: true,
+      isReceivingSelected: false
+    });
     wx.navigateTo({
       url: '/pages/shippingInspectionForm/shippingInspectionForm'
     });
   },
 
   navigateToReceiving() {
+    this.setData({
+      isShippingSelected: false,
+      isReceivingSelected: true
+    });
     wx.navigateTo({
       url: '/pages/receivingInspectionForm/receivingInspectionForm'
     });
