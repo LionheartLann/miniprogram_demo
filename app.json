@@ -6,7 +6,9 @@
     "pages/shipmentForm/shipmentForm",
     "pages/shipment/shipment",
     "pages/receiving/receiving",
-    "pages/shipping/shipping"
+    "pages/shipping/shipping",
+    "pages/shippingInspectionForm/shippingInspectionForm",
+    "pages/receivingInspectionForm/receivingInspectionForm"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

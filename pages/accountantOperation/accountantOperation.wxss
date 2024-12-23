@@ -55,4 +55,15 @@ button.active {
   background-color: #007aff;
   color: #ffffff;
   border-color: #007aff;
+}
+
+.header {
+  padding: 10px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
 } 

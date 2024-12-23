@@ -1,5 +1,8 @@
 <!--pages/accountantOperation/accountantOperation.wxml-->
 <view class="container">
+  <view class="header">
+    <text class="title">做账员详情页</text>
+  </view>
   <view class="tab-content">
     <block wx:if="{{activeTab === 'shipping'}}">
       <!-- Shipping ledger content -->

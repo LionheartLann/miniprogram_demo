@@ -5,7 +5,7 @@ Page({
     const role = e.currentTarget.dataset.role;
     if (role === 'accountant') {
       wx.navigateTo({
-        url: '/pages/accountantOperation/accountantOperation'
+        url: '/pages/shippingInspectionForm/shippingInspectionForm'
       });
     } else {
       wx.showToast({
@@ -13,10 +13,9 @@ Page({
         icon: 'success',
         duration: 2000,
         success: () => {
-          // Navigate to the appropriate page based on the selected role
           let targetPage = '';
           if (role === '做账员') {
-            targetPage = '/pages/accountantOperation/accountantOperation';
+            targetPage = '/pages/shippingInspectionForm/shippingInspectionForm';
           } else {
             targetPage = '/pages/shipmentForm/shipmentForm';
           }

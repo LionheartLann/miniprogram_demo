@@ -1,0 +1,52 @@
+<scroll-view class="table-container" scroll-x="true" scroll-y="true">
+  <view class="table">
+    <view class="table-row table-header">
+      <text class="table-cell">流水号</text>
+      <text class="table-cell">状态</text>
+    </view>
+    <view class="table-row" bindtap="navigateToDetails">
+      <text class="table-cell">WHSC-SH-20231001-001</text>
+      <text class="table-cell">待收货</text>
+    </view>
+    <view class="table-row" bindtap="navigateToDetails">
+      <text class="table-cell">WHSC-SH-20231001-002</text>
+      <text class="table-cell">已收货</text>
+    </view>
+    <view class="table-row" bindtap="navigateToDetails">
+      <text class="table-cell">WHSC-SH-20231001-003</text>
+      <text class="table-cell">收货中</text>
+    </view>
+    <view class="table-row" bindtap="navigateToDetails">
+      <text class="table-cell">WHSC-SH-20231001-004</text>
+      <text class="table-cell">收货完成</text>
+    </view>
+    <view class="table-row" bindtap="navigateToDetails">
+      <text class="table-cell">WHSC-SH-20231001-005</text>
+      <text class="table-cell">收货异常</text>
+    </view>
+    <view class="table-row" bindtap="navigateToDetails">
+      <text class="table-cell">WHSC-SH-20231001-006</text>
+      <text class="table-cell">待收货</text>
+    </view>
+    <view class="table-row" bindtap="navigateToDetails">
+      <text class="table-cell">WHSC-SH-20231001-007</text>
+      <text class="table-cell">已收货</text>
+    </view>
+    <view class="table-row" bindtap="navigateToDetails">
+      <text class="table-cell">WHSC-SH-20231001-008</text>
+      <text class="table-cell">收货中</text>
+    </view>
+    <view class="table-row" bindtap="navigateToDetails">
+      <text class="table-cell">WHSC-SH-20231001-009</text>
+      <text class="table-cell">收货完成</text>
+    </view>
+    <view class="table-row" bindtap="navigateToDetails">
+      <text class="table-cell">WHSC-SH-20231001-010</text>
+      <text class="table-cell">收货异常</text>
+    </view>
+  </view>
+</scroll-view>
+<view class="bottom-nav">
+  <button class="nav-button" bindtap="navigateToShipping">发货</button>
+  <button class="nav-button" bindtap="navigateToReceiving">收货</button>
+</view>
