@@ -13,7 +13,7 @@
           <image class="role-icon" src="/images/accountant_icon.png" mode="aspectFit"></image>
           <view class="text-content">
             <text class="role-name">做账员</text>
-            <text class="role-description">负责处理账务相关工作，包括出入库单据的审核与记账</text>
+            <text class="role-description">负责审核出入库单据，处理账务相关工作</text>
           </view>
         </view>
         <view class="arrow-icon"></view>
