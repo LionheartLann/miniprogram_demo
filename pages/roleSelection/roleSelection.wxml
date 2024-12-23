@@ -1,6 +1,7 @@
 <view class="container">
-  <view class="page-header">
-    <text class="page-title">选择角色</text>
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav">
+    <view class="nav-title">角色选择</view>
   </view>
   
   <view class="role-card">

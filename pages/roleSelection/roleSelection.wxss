@@ -3,22 +3,30 @@
   background-color: #f2f2f7;
   padding-top: calc(env(safe-area-inset-top) + 88px);
   box-sizing: border-box;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
-.page-header {
+.custom-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #f2f2f7;
-  padding: calc(env(safe-area-inset-top) + 24px) 20px 16px;
+  height: 88px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 16px 10px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
 
-.page-title {
-  font-size: 22px;
+.nav-title {
+  font-size: 17px;
   font-weight: 600;
   color: #000;
+  flex: 1;
+  text-align: center;
 }
 
 .role-card {
@@ -112,4 +120,11 @@
 
 .button-hover {
   background-color: #f2f2f7;
+}
+
+.role-list {
+  padding: 88px 16px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 } 
