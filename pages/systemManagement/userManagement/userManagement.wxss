@@ -1,69 +1,237 @@
 /* pages/systemManagement/userManagement/userManagement.wxss */
 .container {
-  padding-top: 104px;
-  padding: 16px;
+  min-height: 100vh;
+  background-color: #f2f2f7;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
-.page-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 16px;
-}
-
-.user-list {
-  margin-bottom: 16px;
-}
-
-.user-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px;
-  border-bottom: 1px solid #e5e5ea;
-}
-
-.button-group {
-  display: flex;
-  gap: 8px;
-}
-
-.operation-button {
-  min-width: 60px;
-  font-size: 14px;
-  padding: 4px 8px;
-  margin: 0;
-  background-color: #007aff;
-  color: #fff;
-}
-
-.operation-button.delete {
-  background-color: #ff3b30;
-}
-
-.add-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #007aff;
-  color: #fff;
-  text-align: center;
-  border-radius: 4px;
-}
-
+/* 导航栏 */
 .custom-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 88px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: flex-end;
-  padding: 0 16px 8px;
-  border-bottom: 1px solid #e5e5ea;
+  padding: 0 16px 10px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
 
+.nav-back {
+  padding: 4px 12px;
+  margin-right: 8px;
+}
+
+.back-icon {
+  font-size: 20px;
+  color: #007aff;
+}
+
 .nav-title {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+  flex: 1;
+  text-align: center;
+  margin-right: 44px;
+}
+
+/* 角色列表 */
+.role-list {
+  padding: 88px 16px 80px;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.role-section {
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.role-header {
+  padding: 16px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.role-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+}
+
+.page-count {
+  font-size: 13px;
+  color: #8e8e93;
+  margin-left: 8px;
+}
+
+/* 用户列表 */
+.pages-list {
+  background: #fff;
+}
+
+.page-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.page-info {
+  flex: 1;
+  margin-right: 12px;
+}
+
+.page-name {
+  font-size: 15px;
+  color: #000;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.page-path {
+  font-size: 12px;
+  color: #8e8e93;
+  display: block;
+}
+
+/* 添加用户按钮 */
+.add-page-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.add-icon {
+  font-size: 20px;
+  color: #007aff;
+  margin-right: 8px;
+}
+
+.add-text {
+  font-size: 15px;
+  color: #007aff;
+}
+
+/* 底部保存按钮 */
+.footer-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.save-button {
+  background: #007aff;
+  color: #fff;
+  border-radius: 12px;
+  font-size: 17px;
+  padding: 12px;
+  margin: 0;
+  margin-bottom: env(safe-area-inset-bottom);
+}
+
+.save-button:active {
+  opacity: 0.8;
+}
+
+/* 弹窗样式 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+  padding: 16px;
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+
+.modal-header {
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-label {
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.input-field {
+  width: 100%;
+  height: 44px;
+  background: #f2f2f7;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 15px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.modal-btn.cancel {
+  background: #f2f2f7;
+  color: #000;
+}
+
+.modal-btn.confirm {
+  background: #007aff;
+  color: #fff;
 }
