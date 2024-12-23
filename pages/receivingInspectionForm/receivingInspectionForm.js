@@ -67,7 +67,7 @@ Page({
   },
 
   /**
-   * 页面上拉���底事件的处理函数
+   * 页面上拉���事件的处理函数
    */
   onReachBottom() {
 
@@ -101,9 +101,10 @@ Page({
     }
   },
 
-  navigateToDetails() {
+  navigateToDetails(e) {
+    const id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/accountantOperation/accountantOperation'
+      url: `/pages/receivingOperation/receivingOperation?id=${id}`
     });
   },
 
@@ -166,5 +167,26 @@ Page({
     this.setData({
       orders: pageItems
     });
+  },
+
+  getStatusClass(status) {
+    return ''; // 移除行背景色
+  },
+
+  getStatusTagClass(status) {
+    switch (status) {
+      case '待收货':
+        return 'status-pending';
+      case '已收货':
+        return 'status-received';
+      case '收货中':
+        return 'status-in-transit';
+      case '收货完成':
+        return 'status-completed';
+      case '收货异常':
+        return 'status-error';
+      default:
+        return '';
+    }
   }
 })

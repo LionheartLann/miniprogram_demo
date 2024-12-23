@@ -14,7 +14,7 @@
     <block wx:for="{{orders}}" wx:key="serialNumber">
       <view class="table-row {{getStatusClass(item.status)}}" bindtap="navigateToDetails">
         <text class="table-cell">{{item.serialNumber}}</text>
-        <text class="table-cell">{{item.status}}</text>
+        <text class="table-cell status-tag {{getStatusTagClass(item.status)}}">{{item.status}}</text>
       </view>
     </block>
   </view>

@@ -136,6 +136,10 @@ Page({
   },
 
   getStatusClass(status) {
+    return ''; // 移除行背景色
+  },
+
+  getStatusTagClass(status) {
     switch (status) {
       case '待发货':
         return 'status-pending';

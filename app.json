@@ -1,14 +1,12 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/roleSelection/roleSelection",
-    "pages/accountantOperation/accountantOperation",
-    "pages/shipmentForm/shipmentForm",
     "pages/shipment/shipment",
     "pages/receiving/receiving",
-    "pages/shipping/shipping",
     "pages/shippingInspectionForm/shippingInspectionForm",
     "pages/receivingInspectionForm/receivingInspectionForm",
+    "pages/accountantOperation/accountantOperation",
+    "pages/receivingOperation/receivingOperation",
     "pages/shippingCreationForm/shippingCreationForm"
   ],
   "window": {
@@ -27,7 +25,7 @@
         "selectedIconPath": "images/image_placeholder.png"
       },
       {
-        "pagePath": "pages/shipping/shipping",
+        "pagePath": "pages/shipment/shipment",
         "text": "发货",
         "iconPath": "images/image_placeholder.png",
         "selectedIconPath": "images/image_placeholder.png"

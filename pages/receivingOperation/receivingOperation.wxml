@@ -1,0 +1,108 @@
+<view class="container">
+  <view class="page-title">收货单详情</view>
+
+  <view class="detail-card">
+    <!-- 基本信息 -->
+    <view class="section-title">基本信息</view>
+    <view class="detail-group">
+      <view class="detail-row">
+        <text class="detail-label">流水号</text>
+        <text class="detail-content">{{formData.serialNumber}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">状态</text>
+        <text class="detail-content status-tag {{formData.status === '待收货' ? 'status-pending' : 'status-completed'}}">
+          {{formData.status}}
+        </text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">采购单号</text>
+        <text class="detail-content">{{formData.orderNumber}}</text>
+      </view>
+    </view>
+
+    <!-- 收货信息 -->
+    <view class="section-title">收货信息</view>
+    <view class="detail-group">
+      <view class="detail-row">
+        <text class="detail-label">供应商</text>
+        <text class="detail-content">{{formData.supplier}}</text>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">实际收货数量</text>
+        <block wx:if="{{isEditing && isFieldEditable('quantity')}}">
+          <input class="detail-input" 
+                 type="number"
+                 value="{{formData.quantity}}"
+                 data-field="quantity"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.quantity}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">是否入库</text>
+        <block wx:if="{{isEditing && isFieldEditable('stored')}}">
+          <input class="detail-input" 
+                 value="{{formData.stored}}"
+                 data-field="stored"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.stored}}</text>
+        </block>
+      </view>
+    </view>
+
+    <!-- 操作信息 -->
+    <view class="section-title">操作信息</view>
+    <view class="detail-group">
+      <view class="detail-row">
+        <text class="detail-label">实物收货人</text>
+        <text class="detail-content">{{formData.receiver}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">收货时间</text>
+        <text class="detail-content">{{formData.receivingTime}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">发起时间</text>
+        <text class="detail-content">{{formData.initiatedTime}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">做账人</text>
+        <text class="detail-content">{{formData.accountant}}</text>
+      </view>
+    </view>
+
+    <!-- 备注信息 -->
+    <view class="section-title">备注信息</view>
+    <view class="detail-group">
+      <view class="detail-row vertical">
+        <text class="detail-label">做账备注</text>
+        <block wx:if="{{isEditing && isFieldEditable('accountingRemarks')}}">
+          <textarea class="detail-textarea" 
+                    value="{{formData.accountingRemarks}}"
+                    data-field="accountingRemarks"
+                    bindinput="onInputChange"
+                    placeholder="请输入做账备注" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.accountingRemarks || '无'}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="bottom-buttons">
+  <button class="bottom-button edit-button" bindtap="toggleEdit">
+    {{isEditing ? '取消' : '编辑'}}
+  </button>
+  <button class="bottom-button save-button" bindtap="saveChanges" wx:if="{{isEditing}}">
+    保存
+  </button>
+</view> 
