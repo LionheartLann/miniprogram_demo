@@ -1,13 +1,18 @@
 .container {
   min-height: 100vh;
   background-color: #f2f2f7;
-  padding-top: env(safe-area-inset-top);
+  padding-top: calc(env(safe-area-inset-top) + 88px);
   box-sizing: border-box;
 }
 
 .page-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: #f2f2f7;
-  padding: 12px 20px 16px;
+  padding: calc(env(safe-area-inset-top) + 24px) 20px 16px;
+  z-index: 100;
 }
 
 .page-title {
@@ -17,7 +22,7 @@
 }
 
 .role-card {
-  margin: 20px 16px;
+  margin: 0 16px;
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
