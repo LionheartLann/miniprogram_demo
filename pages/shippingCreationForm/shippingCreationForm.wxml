@@ -1,23 +1,58 @@
 <view class="container">
-<view class="form-group">
-<label>领料单位</label>
-<input placeholder="输入领料单位" bindinput="onInput" data-field="receivingUnit" />
-</view>
-<view class="form-group">
-<label>施工项目</label>
-<input placeholder="输入施工项目" bindinput="onInput" data-field="project" />
-</view>
-<view class="form-group">
-<label>实际出库数量</label>
-<input placeholder="输入数量" bindinput="onInput" data-field="actualQuantity" />
-</view>
-<view class="form-group">
-<label>物料类别</label>
-<input placeholder="可手动或搜索" bindinput="onInput" data-field="materialCategory" />
-</view>
-<view class="form-group">
-<label>发货问题备注</label>
-<textarea placeholder="如有异常..." bindinput="onInput" data-field="issueRemarks"></textarea>
-</view>
-<button class="submit-button" bindtap="onSubmit">提交发货流程</button>
+  <view class="page-title">发起发货流程</view>
+  
+  <view class="form-card">
+    <view class="form-group">
+      <text class="form-label required">领料单位</text>
+      <input class="form-input" 
+             placeholder="请输入领料单位" 
+             bindinput="onInput" 
+             data-field="receivingUnit" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label required">施工项目</text>
+      <input class="form-input" 
+             placeholder="请输入施工项目" 
+             bindinput="onInput" 
+             data-field="project" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label required">实际出库数量</text>
+      <input class="form-input" 
+             type="number" 
+             placeholder="请输入数量" 
+             bindinput="onInput" 
+             data-field="actualQuantity" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label required">物料类别</text>
+      <picker class="form-picker" 
+              mode="selector" 
+              range="{{materialCategories}}" 
+              bindchange="onMaterialCategoryChange">
+        <view>{{selectedCategory || '请选择物料类别'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">实物发货人</text>
+      <input class="form-input" 
+             placeholder="自动获取或手动输入" 
+             value="{{currentUser}}"
+             disabled="{{true}}" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">发货问题备注</text>
+      <textarea class="form-textarea" 
+                placeholder="如有异常情况请说明" 
+                bindinput="onInput" 
+                data-field="issueRemarks" />
+    </view>
+  </view>
+
+  <button class="submit-button" bindtap="onSubmit">提交发货流程</button>
 </view>
