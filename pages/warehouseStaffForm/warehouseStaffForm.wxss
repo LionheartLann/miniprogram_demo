@@ -3,12 +3,16 @@
 
 /* 仓管员特有样式 */
 .tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(56px + env(safe-area-inset-bottom));
+  background-color: #ffffff;
   display: flex;
-  justify-content: center;
-  margin: 16px 0;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 4px;
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1px solid #e5e5ea;
+  z-index: 100;
 }
 
 .tab {
@@ -30,7 +34,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .search-bar {
@@ -45,4 +49,61 @@
   color: #fff;
   font-size: 14px;
   border-radius: 6px;
-} 
+}
+
+/* 底部标签栏 */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(56px + env(safe-area-inset-bottom));
+  background-color: #ffffff;
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1px solid #e5e5ea;
+  z-index: 100;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #8a8a8a;
+  padding: 6px 0;
+}
+
+.tab-item.active {
+  color: #007aff;
+}
+
+.tab-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 2px;
+}
+
+.tab-text {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* 调整主容器底部边距，为底部导航栏留出空间 */
+.container {
+  padding-bottom: calc(56px + env(safe-area-inset-bottom));
+}
+
+/* 调整表格容器高度 */
+.table-container {
+  height: calc(100vh - 200px - env(safe-area-inset-bottom));
+  margin-bottom: 16px;
+}
+
+/* 调整分页控件位置 */
+.pagination-bar,
+.goto-page {
+  margin-bottom: calc(56px + env(safe-area-inset-bottom) + 16px);
+}
+ 

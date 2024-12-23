@@ -41,6 +41,9 @@ Page({
       currentPage: 1,
       totalPages: Math.ceil(orders.length / 10),
       searchQuery: ''
+    }, () => {
+      // 切换标签后重新加载数据
+      this.loadData();
     });
   },
 

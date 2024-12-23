@@ -1,17 +1,5 @@
 <view class="page-header">
   <view class="page-title">仓库管理</view>
-  <view class="tab-bar">
-    <view class="tab {{isShippingSelected ? 'selected' : ''}}" 
-          bindtap="switchTab" 
-          data-type="shipping">
-      发货单
-    </view>
-    <view class="tab {{isReceivingSelected ? 'selected' : ''}}" 
-          bindtap="switchTab" 
-          data-type="receiving">
-      收货单
-    </view>
-  </view>
   <view class="action-bar">
     <view class="search-bar">
       <input class="search-input" placeholder="输入流水号" bindinput="onSearchInput" />
@@ -50,4 +38,20 @@
   <text>跳转到:</text>
   <input type="number" class="goto-input" bindinput="onPageInput" />
   <button bindtap="onGoPage">Go</button>
+</view>
+
+<!-- 底部导航栏 -->
+<view class="tab-bar">
+  <view class="tab-item {{isShippingSelected ? 'active' : ''}}" 
+        bindtap="switchTab" 
+        data-type="shipping">
+    <image class="tab-icon" src="/images/image_placeholder.png" mode="aspectFit"></image>
+    <text class="tab-text">发货单</text>
+  </view>
+  <view class="tab-item {{isReceivingSelected ? 'active' : ''}}" 
+        bindtap="switchTab" 
+        data-type="receiving">
+    <image class="tab-icon" src="/images/image_placeholder.png" mode="aspectFit"></image>
+    <text class="tab-text">收货单</text>
+  </view>
 </view> 
