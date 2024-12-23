@@ -1,98 +1,129 @@
 <!--pages/accountantOperation/accountantOperation.wxml-->
 <view class="container">
-  <view class="header">
-    <text class="title">做账员详情页</text>
-  </view>
-  <view class="tab-content">
-    <block wx:if="{{activeTab === 'shipping'}}">
-      <!-- Shipping ledger content -->
-      <view class="ledger">
-        <view class="row">
-          <text class="label">发货流水号:</text>
-          <text class="value">{{shippingData.serialNumber}}</text>
-        </view>
-        <view class="row">
-          <text class="label">领料单位:</text>
-          <text class="value">{{shippingData.receivingUnit}}</text>
-        </view>
-        <view class="row">
-          <text class="label">施工项目:</text>
-          <text class="value">{{shippingData.project}}</text>
-        </view>
-        <view class="row">
-          <text class="label">实物发货人:</text>
-          <text class="value">{{shippingData.shipper}}</text>
-        </view>
-        <view class="row">
-          <text class="label">发货师傅发货时间:</text>
-          <text class="value">{{shippingData.shippingTime}}</text>
-        </view>
-        <view class="row">
-          <text class="label">实际出库数量:</text>
-          <text class="value">{{shippingData.actualQuantity}}</text>
-        </view>
-        <view class="row">
-          <text class="label">物料类别:</text>
-          <text class="value">{{shippingData.materialCategory}}</text>
-        </view>
-        <view class="row">
-          <text class="label">发货问题备注:</text>
-          <text class="value">{{shippingData.issueRemarks}}</text>
-        </view>
-        <view class="row">
-          <text class="label">做账员发起发货时间:</text>
-          <text class="value">{{shippingData.initiatedTime}}</text>
-        </view>
-        <view class="row">
-          <text class="label">做账人:</text>
-          <text class="value">{{shippingData.accountant}}</text>
-        </view>
+  <view class="page-title">发货单详情</view>
+
+  <view class="detail-card">
+    <!-- 基本信息 -->
+    <view class="section-title">基本信息</view>
+    <view class="detail-group">
+      <view class="detail-row">
+        <text class="detail-label">流水号</text>
+        <text class="detail-content">{{formData.serialNumber}}</text>
       </view>
-    </block>
-    <block wx:if="{{activeTab === 'receiving'}}">
-      <!-- Receiving ledger content -->
-      <view class="ledger">
-        <view class="row">
-          <text class="label">收货流水号:</text>
-          <text class="value">{{receivingData.serialNumber}}</text>
-        </view>
-        <view class="row">
-          <text class="label">订单号:</text>
-          <text class="value">{{receivingData.orderNumber}}</text>
-        </view>
-        <view class="row">
-          <text class="label">供应商:</text>
-          <text class="value">{{receivingData.supplier}}</text>
-        </view>
-        <view class="row">
-          <text class="label">接货人:</text>
-          <text class="value">{{receivingData.receiver}}</text>
-        </view>
-        <view class="row">
-          <text class="label">收货时间:</text>
-          <text class="value">{{receivingData.receivingTime}}</text>
-        </view>
-        <view class="row">
-          <text class="label">是否入库:</text>
-          <text class="value">{{receivingData.stored}}</text>
-        </view>
-        <view class="row">
-          <text class="label">入库做账时间:</text>
-          <text class="value">{{receivingData.accountingTime}}</text>
-        </view>
-        <view class="row">
-          <text class="label">做账人:</text>
-          <text class="value">{{receivingData.accountant}}</text>
-        </view>
-        <view class="row">
-          <text class="label">做账问题备注:</text>
-          <text class="value">{{receivingData.issueRemarks}}</text>
-        </view>
+      <view class="detail-row">
+        <text class="detail-label">状态</text>
+        <text class="detail-content status-tag {{formData.status === '待发货' ? 'status-pending' : 'status-completed'}}">
+          {{formData.status}}
+        </text>
       </view>
-    </block>
+    </view>
+
+    <!-- 发货信息 -->
+    <view class="section-title">发货信息</view>
+    <view class="detail-group">
+      <view class="detail-row">
+        <text class="detail-label">领料单位</text>
+        <block wx:if="{{isEditing && isFieldEditable('receivingUnit')}}">
+          <input class="detail-input" 
+                 value="{{formData.receivingUnit}}"
+                 data-field="receivingUnit"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.receivingUnit}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">施工项目</text>
+        <block wx:if="{{isEditing && isFieldEditable('project')}}">
+          <input class="detail-input" 
+                 value="{{formData.project}}"
+                 data-field="project"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.project}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">实际出库数量</text>
+        <block wx:if="{{isEditing && isFieldEditable('quantity')}}">
+          <input class="detail-input" 
+                 type="number"
+                 value="{{formData.quantity}}"
+                 data-field="quantity"
+                 bindinput="onInputChange" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.quantity}}</text>
+        </block>
+      </view>
+
+      <view class="detail-row">
+        <text class="detail-label">物料类别</text>
+        <block wx:if="{{isEditing && isFieldEditable('materialCategory')}}">
+          <picker class="detail-input" 
+                  mode="selector" 
+                  range="{{materialCategories}}"
+                  value="{{materialCategoryIndex}}"
+                  bindchange="onCategoryChange">
+            <view>{{formData.materialCategory}}</view>
+          </picker>
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.materialCategory}}</text>
+        </block>
+      </view>
+    </view>
+
+    <!-- 操作信息 -->
+    <view class="section-title">操作信息</view>
+    <view class="detail-group">
+      <view class="detail-row">
+        <text class="detail-label">实物发货人</text>
+        <text class="detail-content">{{formData.shipper}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">发货时间</text>
+        <text class="detail-content">{{formData.shippingTime}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">发起时间</text>
+        <text class="detail-content">{{formData.initiatedTime}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">做账人</text>
+        <text class="detail-content">{{formData.accountant}}</text>
+      </view>
+    </view>
+
+    <!-- 备注信息 -->
+    <view class="section-title">备注信息</view>
+    <view class="detail-group">
+      <view class="detail-row vertical">
+        <text class="detail-label">做账备注</text>
+        <block wx:if="{{isEditing && isFieldEditable('accountingRemarks')}}">
+          <textarea class="detail-textarea" 
+                    value="{{formData.accountingRemarks}}"
+                    data-field="accountingRemarks"
+                    bindinput="onInputChange"
+                    placeholder="请输入做账备注" />
+        </block>
+        <block wx:else>
+          <text class="detail-content">{{formData.accountingRemarks || '无'}}</text>
+        </block>
+      </view>
+    </view>
   </view>
-  <view class="bottom-nav">
-    <button data-tab="shipping" bindtap="onTabChange" class="{{activeTab === 'shipping' ? 'active' : ''}}">发货</button>
-    <button data-tab="receiving" bindtap="onTabChange" class="{{activeTab === 'receiving' ? 'active' : ''}}">收货</button>
-  </view>
+</view>
+
+<view class="bottom-buttons">
+  <button class="bottom-button edit-button" bindtap="toggleEdit">
+    {{isEditing ? '取消' : '编辑'}}
+  </button>
+  <button class="bottom-button save-button" bindtap="saveChanges" wx:if="{{isEditing}}">
+    保存
+  </button>
 </view>

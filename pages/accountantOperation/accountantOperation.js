@@ -5,37 +5,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activeTab: 'shipping', // Default tab
-    shippingData: {
+    isEditing: false,
+    materialCategories: ['原材料', '成品', '半成品', '工具', '其他'],
+    materialCategoryIndex: 0,
+    formData: {
       serialNumber: 'WHSC-FH-20231001-001',
-      receivingUnit: 'Example Unit',
-      project: 'Example Project',
-      shipper: '系统自动抓取',
+      shipper: '张三',
       shippingTime: '2023-10-01 10:00',
-      actualQuantity: 100,
-      materialCategory: 'Example Material',
-      issueRemarks: '无',
       initiatedTime: '2023-10-01 09:00',
-      accountant: '系统自动抓取'
+      accountant: '李四',
+      status: '待发货',
+      receivingUnit: '某施工单位',
+      project: '工程项目A',
+      quantity: '100',
+      materialCategory: '原材料',
+      remarks: '',
+      accountingRemarks: ''
     },
-    receivingData: {
-      serialNumber: 'WHSC-SH-20231001-001',
-      orderNumber: '123456',
-      supplier: 'Example Supplier',
-      receiver: '系统自动抓取',
-      receivingTime: '2023-10-01 08:00',
-      stored: '是',
-      accountingTime: '2023-10-01 08:30',
-      accountant: '系统自动抓取',
-      issueRemarks: '无'
-    }
+    editableFields: [
+      'receivingUnit',
+      'project',
+      'quantity',
+      'materialCategory',
+      'accountingRemarks'
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    // 这里可以根据传入的参数加载具体数据
+    // const { id } = options;
+    // this.loadDetailData(id);
   },
 
   /**
@@ -94,5 +96,67 @@ Page({
     this.setData({
       activeTab: event.currentTarget.dataset.tab
     });
+  },
+
+  isFieldEditable(field) {
+    return this.data.editableFields.includes(field);
+  },
+
+  toggleEdit() {
+    if (this.data.isEditing) {
+      // 取消编辑，恢复原始数据
+      wx.showModal({
+        title: '提示',
+        content: '确定要取消编辑吗？未保存的修改将丢失',
+        success: (res) => {
+          if (res.confirm) {
+            this.setData({
+              isEditing: false
+            });
+          }
+        }
+      });
+    } else {
+      this.setData({
+        isEditing: true
+      });
+    }
+  },
+
+  onInputChange(e) {
+    const { field } = e.currentTarget.dataset;
+    const { value } = e.detail;
+    
+    this.setData({
+      [`formData.${field}`]: value
+    });
+  },
+
+  onCategoryChange(e) {
+    const index = e.detail.value;
+    this.setData({
+      materialCategoryIndex: index,
+      'formData.materialCategory': this.data.materialCategories[index]
+    });
+  },
+
+  saveChanges() {
+    wx.showLoading({
+      title: '保存中...'
+    });
+
+    // 模拟保存操作
+    setTimeout(() => {
+      wx.hideLoading();
+      wx.showToast({
+        title: '保存成功',
+        icon: 'success',
+        duration: 2000
+      });
+
+      this.setData({
+        isEditing: false
+      });
+    }, 1500);
   }
 })
