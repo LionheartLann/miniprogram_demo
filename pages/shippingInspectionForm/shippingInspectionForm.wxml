@@ -1,5 +1,9 @@
-<view class="page-header">
-  <view class="page-title">发货检查表</view>
+<view class="page-header" style="padding-top: {{statusBarHeight}}px">
+  <view class="page-title">
+    <view class="nav-back" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>发货检查表
+  </view>
   <view class="search-bar">
     <input class="search-input" placeholder="输入流水号" bindinput="onSearchInput" />
     <button class="search-button" bindtap="onSearch">搜索</button>
@@ -21,16 +25,17 @@
 </scroll-view>
 
 <!-- Pagination Controls -->
-<view class="pagination-bar">
-  <button bindtap="onPrevPage">上一页</button>
-  <text>第 {{currentPage}} 页 / 共 {{totalPages}} 页</text>
-  <button bindtap="onNextPage">下一页</button>
-</view>
 <view class="goto-page">
   <text>跳转到:</text>
   <input type="number" class="goto-input" bindinput="onPageInput" />
   <button bindtap="onGoPage">Go</button>
 </view>
+<view class="pagination-bar">
+  <button bindtap="onPrevPage">上一页</button>
+  <text>第 {{currentPage}} 页 / 共 {{totalPages}} 页</text>
+  <button bindtap="onNextPage">下一页</button>
+</view>
+
 
 <floating-button bind:fabtap="onFabTap" />
 <view class="bottom-nav">

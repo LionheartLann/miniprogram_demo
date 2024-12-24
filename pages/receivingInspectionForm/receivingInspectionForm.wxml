@@ -1,4 +1,4 @@
-<view class="page-header">
+<view class="page-header" style="padding-top: {{statusBarHeight}}px">
   <view class="page-title">收货检查表</view>
   <view class="search-bar">
     <input class="search-input" placeholder="输入流水号" bindinput="onSearchInput" />

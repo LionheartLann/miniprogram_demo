@@ -1,110 +1,127 @@
-import { getShippingData } from '../../utils/dataService';
+import { getShippingData } from "../../utils/dataService";
 
 Page({
-  data: {
-    searchQuery: '',
-    allOrders: [],
-    orders: [],
-    currentPage: 1,
-    totalPages: 5,
-    typedPage: '',
-    isShippingSelected: true,
-    isReceivingSelected: false
-  },
+    data: {
+        searchQuery: "",
+        allOrders: [],
+        orders: [],
+        currentPage: 1,
+        totalPages: 5,
+        typedPage: "",
+        isShippingSelected: true,
+        isReceivingSelected: false,
+        statusBarHeight: 0,
+    },
 
-  onLoad(options) {
-    const fullData = getShippingData();
-    this.setData({
-      allOrders: fullData
-    });
-    this.setData({
-      totalPages: Math.ceil(fullData.length / 10)
-    });
-    this.loadData();
-  },
+    onLoad(options) {
+        const fullData = getShippingData();
+        this.setData({
+            allOrders: fullData,
+        });
+        this.setData({
+            totalPages: Math.ceil(fullData.length / 10),
+        });
 
-  navigateToDetails(e) {
-    const id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: `/pages/shippingStaffOperation/shippingStaffOperation?id=${id}`
-    });
-  },
+        let sysInfo = wx.getSystemInfoSync();
+        // 获取微信小程序胶囊布局位置信息
+        let rect = wx.getMenuButtonBoundingClientRect();
+        let navBarHeight =
+            (rect.top - sysInfo.statusBarHeight) * 2 + rect.height;
+        this.setData({
+            statusBarHeight: sysInfo.statusBarHeight,
+            navBarHeight: navBarHeight,
+            totalPages: Math.ceil(fullData.length / 10),
+            allOrders: fullData,
+        });
+        this.loadData();
+    },
 
-  onSearchInput(e) {
-    this.setData({ searchQuery: e.detail.value });
-  },
+    navigateToDetails(e) {
+        const id = e.currentTarget.dataset.id;
+        wx.navigateTo({
+            url: `/pages/shippingStaffOperation/shippingStaffOperation?id=${id}`,
+        });
+    },
 
-  onSearch() {
-    const query = this.data.searchQuery.toLowerCase();
-    const filteredOrders = this.data.allOrders.filter(order => 
-      order.serialNumber.toLowerCase().includes(query)
-    );
-    this.setData({
-      orders: filteredOrders.slice(0, 10),
-      currentPage: 1,
-      totalPages: Math.ceil(filteredOrders.length / 10)
-    });
-  },
+    navigateBack() {
+        wx.navigateBack();
+    },
 
-  loadData() {
-    const pageSize = 10;
-    const startIndex = (this.data.currentPage - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    const pageItems = this.data.allOrders.slice(startIndex, endIndex);
-    this.setData({
-      orders: pageItems
-    });
-  },
+    onSearchInput(e) {
+        this.setData({ searchQuery: e.detail.value });
+    },
 
-  onPrevPage() {
-    if (this.data.currentPage > 1) {
-      this.setData({ currentPage: this.data.currentPage - 1 });
-      this.loadData();
-    }
-  },
+    onSearch() {
+        const query = this.data.searchQuery.toLowerCase();
+        const filteredOrders = this.data.allOrders.filter((order) =>
+            order.serialNumber.toLowerCase().includes(query)
+        );
+        this.setData({
+            orders: filteredOrders.slice(0, 10),
+            currentPage: 1,
+            totalPages: Math.ceil(filteredOrders.length / 10),
+        });
+    },
 
-  onNextPage() {
-    if (this.data.currentPage < this.data.totalPages) {
-      this.setData({ currentPage: this.data.currentPage + 1 });
-      this.loadData();
-    }
-  },
+    loadData() {
+        const pageSize = 10;
+        const startIndex = (this.data.currentPage - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+        const pageItems = this.data.allOrders.slice(startIndex, endIndex);
+        this.setData({
+            orders: pageItems,
+        });
+    },
 
-  onPageInput(e) {
-    this.setData({ typedPage: e.detail.value });
-  },
+    onPrevPage() {
+        if (this.data.currentPage > 1) {
+            this.setData({ currentPage: this.data.currentPage - 1 });
+            this.loadData();
+        }
+    },
 
-  onGoPage() {
-    const page = parseInt(this.data.typedPage, 10);
-    if (page && page >= 1 && page <= this.data.totalPages) {
-      this.setData({ currentPage: page });
-      this.loadData();
-    } else {
-      wx.showToast({
-        title: '页数超出范围',
-        icon: 'none'
-      });
-    }
-  },
+    onNextPage() {
+        if (this.data.currentPage < this.data.totalPages) {
+            this.setData({ currentPage: this.data.currentPage + 1 });
+            this.loadData();
+        }
+    },
 
-  getStatusClass(status) {
-    return ''; // 移除行背景色
-  },
+    onPageInput(e) {
+        this.setData({ typedPage: e.detail.value });
+    },
 
-  getStatusTagClass(status) {
-    switch (status) {
-      case '待发货':
-        return 'status-pending';
-      case '已发货':
-        return 'status-shipped';
-      case '发货中':
-        return 'status-in-transit';
-      case '发货完成':
-        return 'status-completed';
-      case '发货异常':
-        return 'status-error';
-      default:
-        return '';
-    }
-  }
-}); 
+    onGoPage() {
+        const page = parseInt(this.data.typedPage, 10);
+        if (page && page >= 1 && page <= this.data.totalPages) {
+            this.setData({ currentPage: page });
+            this.loadData();
+        } else {
+            wx.showToast({
+                title: "页数超出范围",
+                icon: "none",
+            });
+        }
+    },
+
+    getStatusClass(status) {
+        return ""; // 移除行背景色
+    },
+
+    getStatusTagClass(status) {
+        switch (status) {
+            case "待发货":
+                return "status-pending";
+            case "已发货":
+                return "status-shipped";
+            case "发货中":
+                return "status-in-transit";
+            case "发货完成":
+                return "status-completed";
+            case "发货异常":
+                return "status-error";
+            default:
+                return "";
+        }
+    },
+});
