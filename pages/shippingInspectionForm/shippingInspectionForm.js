@@ -110,7 +110,7 @@ Page({
             isShippingSelected: true,
             isReceivingSelected: false,
         });
-        wx.navigateTo({
+        wx.redirectTo({
             url: "/pages/shippingInspectionForm/shippingInspectionForm",
         });
     },
@@ -120,7 +120,7 @@ Page({
             isShippingSelected: false,
             isReceivingSelected: true,
         });
-        wx.navigateTo({
+        wx.redirectTo({
             url: "/pages/receivingInspectionForm/receivingInspectionForm",
         });
     },
