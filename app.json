@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/roleSelection/roleSelection",
     "pages/shipment/shipment",
     "pages/receiving/receiving",
@@ -29,7 +30,7 @@
     "list": [
       {
         "pagePath": "pages/receiving/receiving",
-        "text": "收货",
+        "text": "��货",
         "iconPath": "images/image_placeholder.png",
         "selectedIconPath": "images/image_placeholder.png"
       },
