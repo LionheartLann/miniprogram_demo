@@ -1,56 +1,41 @@
-<view class="container">
-  <view class="page-title">发起发货流程</view>
-  
+<view class="container-shipping">
+  <view class="page-title">
+    <view class="nav-back" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>发起发货流程
+  </view>
+
   <view class="form-card">
     <view class="form-group">
       <text class="form-label required">领料单位</text>
-      <input class="form-input" 
-             placeholder="请输入领料单位" 
-             bindinput="onInput" 
-             data-field="receivingUnit" />
+      <input class="form-input" placeholder="请输入领料单位" bindinput="onInput" data-field="receivingUnit" />
     </view>
 
     <view class="form-group">
       <text class="form-label required">施工项目</text>
-      <input class="form-input" 
-             placeholder="请输入施工项目" 
-             bindinput="onInput" 
-             data-field="project" />
+      <input class="form-input" placeholder="请输入施工项目" bindinput="onInput" data-field="project" />
     </view>
 
     <view class="form-group">
       <text class="form-label required">实际出库数量</text>
-      <input class="form-input" 
-             type="number" 
-             placeholder="请输入数量" 
-             bindinput="onInput" 
-             data-field="actualQuantity" />
+      <input class="form-input" type="number" placeholder="请输入数量" bindinput="onInput" data-field="actualQuantity" />
     </view>
 
     <view class="form-group">
       <text class="form-label required">物料类别</text>
-      <picker class="form-picker" 
-              mode="selector" 
-              range="{{materialCategories}}" 
-              bindchange="onMaterialCategoryChange">
+      <picker class="form-picker" mode="selector" range="{{materialCategories}}" bindchange="onMaterialCategoryChange">
         <view>{{selectedCategory || '请选择物料类别'}}</view>
       </picker>
     </view>
 
     <view class="form-group">
       <text class="form-label">实物发货人</text>
-      <input class="form-input" 
-             placeholder="自动获取或手动输入" 
-             value="{{currentUser}}"
-             disabled="{{true}}" />
+      <input class="form-input" placeholder="自动获取或手动输入" value="{{currentUser}}" disabled="{{true}}" />
     </view>
 
     <view class="form-group">
       <text class="form-label">发货问题备注</text>
-      <textarea class="form-textarea" 
-                placeholder="如有异常情况请说明" 
-                bindinput="onInput" 
-                data-field="issueRemarks" />
+      <textarea class="form-textarea" placeholder="如有异常情况请说明" bindinput="onInput" data-field="issueRemarks" />
     </view>
   </view>
 
