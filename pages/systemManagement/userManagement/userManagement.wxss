@@ -42,7 +42,7 @@
 
 /* 角色列表 */
 .role-list {
-  padding: 88px 16px 80px;
+  padding: 10px 16px 80px;
   box-sizing: border-box;
   height: 100vh;
 }

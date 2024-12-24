@@ -31,15 +31,15 @@
 </scroll-view>
 
 <!-- Pagination Controls -->
-<view class="pagination-bar">
-  <button bindtap="onPrevPage">上一页</button>
-  <text>第 {{currentPage}} 页 / 共 {{totalPages}} 页</text>
-  <button bindtap="onNextPage">下一页</button>
-</view>
 <view class="goto-page">
   <text>跳转到:</text>
   <input type="number" class="goto-input" bindinput="onPageInput" />
   <button bindtap="onGoPage">Go</button>
+</view>
+<view class="pagination-bar">
+  <button bindtap="onPrevPage">上一页</button>
+  <text>第 {{currentPage}} 页 / 共 {{totalPages}} 页</text>
+  <button bindtap="onNextPage">下一页</button>
 </view>
 
 <!-- 底部导航栏 -->

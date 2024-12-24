@@ -1,5 +1,10 @@
 <view class="container">
-  <view class="page-title">收货单详情</view>
+  <view class="page-title">
+    <view class="nav-back" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>收货单详情
+  </view>
+
 
   <view class="detail-card">
     <!-- 基本信息 -->
@@ -31,11 +36,8 @@
       <view class="detail-row">
         <text class="detail-label">实际收货数量</text>
         <block wx:if="{{isEditing && isFieldEditable('actualQuantity')}}">
-          <input class="detail-input" 
-                 type="number"
-                 value="{{formData.actualQuantity}}"
-                 data-field="actualQuantity"
-                 bindinput="onInputChange" />
+          <input class="detail-input" type="number" value="{{formData.actualQuantity}}" data-field="actualQuantity"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.actualQuantity}}</text>
@@ -45,10 +47,8 @@
       <view class="detail-row">
         <text class="detail-label">物料状态</text>
         <block wx:if="{{isEditing && isFieldEditable('materialStatus')}}">
-          <input class="detail-input" 
-                 value="{{formData.materialStatus}}"
-                 data-field="materialStatus"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.materialStatus}}" data-field="materialStatus"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.materialStatus}}</text>
@@ -58,10 +58,8 @@
       <view class="detail-row">
         <text class="detail-label">质量状态</text>
         <block wx:if="{{isEditing && isFieldEditable('qualityStatus')}}">
-          <input class="detail-input" 
-                 value="{{formData.qualityStatus}}"
-                 data-field="qualityStatus"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.qualityStatus}}" data-field="qualityStatus"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.qualityStatus}}</text>
@@ -71,10 +69,7 @@
       <view class="detail-row">
         <text class="detail-label">是否入库</text>
         <block wx:if="{{isEditing && isFieldEditable('isStored')}}">
-          <input class="detail-input" 
-                 value="{{formData.isStored}}"
-                 data-field="isStored"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.isStored}}" data-field="isStored" bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.isStored}}</text>
@@ -84,10 +79,8 @@
       <view class="detail-row">
         <text class="detail-label">存放位置</text>
         <block wx:if="{{isEditing && isFieldEditable('storageLocation')}}">
-          <input class="detail-input" 
-                 value="{{formData.storageLocation}}"
-                 data-field="storageLocation"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.storageLocation}}" data-field="storageLocation"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.storageLocation}}</text>
@@ -101,11 +94,8 @@
       <view class="detail-row vertical">
         <text class="detail-label">收货备注</text>
         <block wx:if="{{isEditing && isFieldEditable('receivingRemarks')}}">
-          <textarea class="detail-textarea" 
-                    value="{{formData.receivingRemarks}}"
-                    data-field="receivingRemarks"
-                    bindinput="onInputChange"
-                    placeholder="请输入收货备注" />
+          <textarea class="detail-textarea" value="{{formData.receivingRemarks}}" data-field="receivingRemarks"
+            bindinput="onInputChange" placeholder="请输入收货备注" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.receivingRemarks || '无'}}</text>
@@ -122,4 +112,4 @@
   <button class="bottom-button save-button" bindtap="saveChanges" wx:if="{{isEditing}}">
     保存
   </button>
-</view> 
+</view>
