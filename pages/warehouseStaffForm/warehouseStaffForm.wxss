@@ -3,97 +3,98 @@
 
 /* 仓管员特有样式 */
 .tab-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: calc(56px + env(safe-area-inset-bottom));
-  background-color: #ffffff;
-  display: flex;
-  padding-bottom: env(safe-area-inset-bottom);
-  border-top: 1px solid #e5e5ea;
-  z-index: 100;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(56px + env(safe-area-inset-bottom));
+    background-color: #ffffff;
+    display: flex;
+    padding-bottom: env(safe-area-inset-bottom);
+    border-top: 1px solid #e5e5ea;
+    z-index: 100;
 }
 
 .tab {
-  flex: 1;
-  text-align: center;
-  padding: 8px 0;
-  color: #666;
-  font-size: 15px;
-  max-width: 120px;
-  border-radius: 6px;
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+    color: #666;
+    font-size: 15px;
+    max-width: 120px;
+    border-radius: 6px;
 }
 
 .tab.selected {
-  background-color: #007aff;
-  color: #fff;
+    background-color: #007aff;
+    color: #fff;
 }
 
 .action-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
 }
 
 .search-bar {
-  flex: 1;
+    flex: 1;
 }
 
 /* 底部标签栏 */
 .tab-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: calc(56px + env(safe-area-inset-bottom));
-  background-color: #ffffff;
-  display: flex;
-  padding-bottom: env(safe-area-inset-bottom);
-  border-top: 1px solid #e5e5ea;
-  z-index: 100;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(56px + env(safe-area-inset-bottom));
+    background-color: #ffffff;
+    display: flex;
+    padding-bottom: env(safe-area-inset-bottom);
+    border-top: 1px solid #e5e5ea;
+    z-index: 100;
 }
 
 .tab-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #8a8a8a;
-  padding: 6px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #8a8a8a;
+    padding: 6px 0;
 }
 
 .tab-item.active {
-  color: #007aff;
+    color: #007aff;
 }
 
 .tab-icon {
-  width: 24px;
-  height: 24px;
-  margin-bottom: 2px;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 2px;
 }
 
 .tab-text {
-  font-size: 14px;
-  line-height: 1.2;
+    font-size: 14px;
+    line-height: 1.2;
 }
 
 /* 调整主容器底部边距，为底部导航栏留出空间 */
 .container {
-  padding-bottom: calc(56px + env(safe-area-inset-bottom));
+    padding-bottom: calc(56px + env(safe-area-inset-bottom));
 }
 
 /* 调整表格容器高度 */
 .table-container {
-  height: calc(100vh - 200px - env(safe-area-inset-bottom));
-  margin-bottom: 16px;
+    /* height: calc(100vh - 200px - env(safe-area-inset-bottom)); */
+    height: calc(100vh - 800rpx);
+    margin-top: 320rpx;
+    margin-bottom: 16px;
 }
 
 /* 调整分页控件位置 */
 .pagination-bar,
 .goto-page {
-  margin-bottom: calc(56px + env(safe-area-inset-bottom) + 16px);
+    /* margin-bottom: calc(56px + env(safe-area-inset-bottom) + 16px); */
 }
- 

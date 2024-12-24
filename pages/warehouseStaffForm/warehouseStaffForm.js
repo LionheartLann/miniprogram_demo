@@ -1,152 +1,171 @@
-import { getShippingData, getReceivingData } from '../../utils/dataService';
+import { getShippingData, getReceivingData } from "../../utils/dataService";
 
 Page({
-  data: {
-    searchQuery: '',
-    allOrders: [],
-    orders: [],
-    currentPage: 1,
-    totalPages: 5,
-    typedPage: '',
-    isShippingSelected: true,
-    isReceivingSelected: false,
-    shippingOrders: [],
-    receivingOrders: []
-  },
+    data: {
+        searchQuery: "",
+        allOrders: [],
+        orders: [],
+        currentPage: 1,
+        totalPages: 5,
+        typedPage: "",
+        isShippingSelected: true,
+        isReceivingSelected: false,
+        shippingOrders: [],
+        receivingOrders: [],
+        statusBarHeight: 0,
+        navBarHeight: 0,
+    },
 
-  onLoad(options) {
-    const shippingData = getShippingData();
-    const receivingData = getReceivingData();
-    
-    this.setData({
-      shippingOrders: shippingData,
-      receivingOrders: receivingData,
-      allOrders: shippingData,
-      orders: shippingData.slice(0, 10),
-      totalPages: Math.ceil(shippingData.length / 10)
-    });
-  },
+    onLoad(options) {
+        const shippingData = getShippingData();
+        const receivingData = getReceivingData();
 
-  // 切换发货/收货列表
-  switchTab(e) {
-    const type = e.currentTarget.dataset.type;
-    const isShipping = type === 'shipping';
-    const isReceiving = type === 'receiving';
-    const isSystem = type === 'system';
+        let sysInfo = wx.getSystemInfoSync();
+        // 获取微信小程序胶囊布局位置信息
+        let rect = wx.getMenuButtonBoundingClientRect();
+        let navBarHeight =
+            (rect.top - sysInfo.statusBarHeight) * 2 + rect.height;
 
-    if (isSystem) {
-      wx.navigateTo({
-        url: '/pages/systemManagement/systemManagement/systemManagement',
-        fail: (err) => {
-          console.error('导航失败：', err);
-          wx.showToast({
-            title: '页面跳转失败',
-            icon: 'none'
-          });
+        this.setData({
+            statusBarHeight: sysInfo.statusBarHeight,
+            navBarHeight: navBarHeight,
+            shippingOrders: shippingData,
+            receivingOrders: receivingData,
+            allOrders: shippingData,
+            orders: shippingData.slice(0, 10),
+            totalPages: Math.ceil(shippingData.length / 10),
+        });
+    },
+
+    navigateBack() {
+        wx.navigateBack();
+    },
+
+    // 切换发货/收货列表
+    switchTab(e) {
+        const type = e.currentTarget.dataset.type;
+        const isShipping = type === "shipping";
+        const isReceiving = type === "receiving";
+        const isSystem = type === "system";
+
+        if (isSystem) {
+            wx.navigateTo({
+                url: "/pages/systemManagement/systemManagement/systemManagement",
+                fail: (err) => {
+                    console.error("导航失败：", err);
+                    wx.showToast({
+                        title: "页面跳转失败",
+                        icon: "none",
+                    });
+                },
+            });
+            return;
         }
-      });
-      return;
-    }
 
-    const orders = isShipping ? this.data.shippingOrders : this.data.receivingOrders;
-    
-    this.setData({
-      isShippingSelected: isShipping,
-      isReceivingSelected: isReceiving,
-      isSystemSelected: isSystem,
-      allOrders: orders,
-      orders: orders.slice(0, 10),
-      currentPage: 1,
-      totalPages: Math.ceil(orders.length / 10),
-      searchQuery: ''
-    }, () => {
-      // 切换标签后重新加载数据
-      this.loadData();
-    });
-  },
+        const orders = isShipping
+            ? this.data.shippingOrders
+            : this.data.receivingOrders;
 
-  navigateToDetails(e) {
-    const id = e.currentTarget.dataset.id;
-    const type = this.data.isShippingSelected ? 'shipping' : 'receiving';
-    wx.navigateTo({
-      url: `/pages/warehouseStaffOperation/warehouseStaffOperation?id=${id}&type=${type}`
-    });
-  },
+        this.setData(
+            {
+                isShippingSelected: isShipping,
+                isReceivingSelected: isReceiving,
+                isSystemSelected: isSystem,
+                allOrders: orders,
+                orders: orders.slice(0, 10),
+                currentPage: 1,
+                totalPages: Math.ceil(orders.length / 10),
+                searchQuery: "",
+            },
+            () => {
+                // 切换标签后重新加载数据
+                this.loadData();
+            }
+        );
+    },
 
-  onSearchInput(e) {
-    this.setData({ searchQuery: e.detail.value });
-  },
+    navigateToDetails(e) {
+        const id = e.currentTarget.dataset.id;
+        const type = this.data.isShippingSelected ? "shipping" : "receiving";
+        wx.navigateTo({
+            url: `/pages/warehouseStaffOperation/warehouseStaffOperation?id=${id}&type=${type}`,
+        });
+    },
 
-  onSearch() {
-    const query = this.data.searchQuery.toLowerCase();
-    const filteredOrders = this.data.allOrders.filter(order => 
-      order.serialNumber.toLowerCase().includes(query)
-    );
-    this.setData({
-      orders: filteredOrders.slice(0, 10),
-      currentPage: 1,
-      totalPages: Math.ceil(filteredOrders.length / 10)
-    });
-  },
+    onSearchInput(e) {
+        this.setData({ searchQuery: e.detail.value });
+    },
 
-  loadData() {
-    const pageSize = 10;
-    const startIndex = (this.data.currentPage - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    const pageItems = this.data.allOrders.slice(startIndex, endIndex);
-    this.setData({
-      orders: pageItems
-    });
-  },
+    onSearch() {
+        const query = this.data.searchQuery.toLowerCase();
+        const filteredOrders = this.data.allOrders.filter((order) =>
+            order.serialNumber.toLowerCase().includes(query)
+        );
+        this.setData({
+            orders: filteredOrders.slice(0, 10),
+            currentPage: 1,
+            totalPages: Math.ceil(filteredOrders.length / 10),
+        });
+    },
 
-  getStatusClass(status) {
-    return '';
-  },
+    loadData() {
+        const pageSize = 10;
+        const startIndex = (this.data.currentPage - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+        const pageItems = this.data.allOrders.slice(startIndex, endIndex);
+        this.setData({
+            orders: pageItems,
+        });
+    },
 
-  getStatusTagClass(status) {
-    const statusMap = {
-      '待发货': 'status-pending',
-      '已发货': 'status-shipped',
-      '发货中': 'status-in-transit',
-      '发货完成': 'status-completed',
-      '发货异常': 'status-error',
-      '待收货': 'status-pending',
-      '已收货': 'status-received',
-      '收货中': 'status-in-transit',
-      '收货完成': 'status-completed',
-      '收货异常': 'status-error'
-    };
-    return statusMap[status] || '';
-  },
+    getStatusClass(status) {
+        return "";
+    },
 
-  onPrevPage() {
-    if (this.data.currentPage > 1) {
-      this.setData({ currentPage: this.data.currentPage - 1 });
-      this.loadData();
-    }
-  },
+    getStatusTagClass(status) {
+        const statusMap = {
+            待发货: "status-pending",
+            已发货: "status-shipped",
+            发货中: "status-in-transit",
+            发货完成: "status-completed",
+            发货异常: "status-error",
+            待收货: "status-pending",
+            已收货: "status-received",
+            收货中: "status-in-transit",
+            收货完成: "status-completed",
+            收货异常: "status-error",
+        };
+        return statusMap[status] || "";
+    },
 
-  onNextPage() {
-    if (this.data.currentPage < this.data.totalPages) {
-      this.setData({ currentPage: this.data.currentPage + 1 });
-      this.loadData();
-    }
-  },
+    onPrevPage() {
+        if (this.data.currentPage > 1) {
+            this.setData({ currentPage: this.data.currentPage - 1 });
+            this.loadData();
+        }
+    },
 
-  onPageInput(e) {
-    this.setData({ typedPage: e.detail.value });
-  },
+    onNextPage() {
+        if (this.data.currentPage < this.data.totalPages) {
+            this.setData({ currentPage: this.data.currentPage + 1 });
+            this.loadData();
+        }
+    },
 
-  onGoPage() {
-    const page = parseInt(this.data.typedPage, 10);
-    if (page && page >= 1 && page <= this.data.totalPages) {
-      this.setData({ currentPage: page });
-      this.loadData();
-    } else {
-      wx.showToast({
-        title: '页数超出范围',
-        icon: 'none'
-      });
-    }
-  }
-}); 
+    onPageInput(e) {
+        this.setData({ typedPage: e.detail.value });
+    },
+
+    onGoPage() {
+        const page = parseInt(this.data.typedPage, 10);
+        if (page && page >= 1 && page <= this.data.totalPages) {
+            this.setData({ currentPage: page });
+            this.loadData();
+        } else {
+            wx.showToast({
+                title: "页数超出范围",
+                icon: "none",
+            });
+        }
+    },
+});

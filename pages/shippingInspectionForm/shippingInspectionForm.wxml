@@ -1,5 +1,9 @@
 <view class="page-header" style="padding-top: {{statusBarHeight}}px">
-  <view class="page-title">发货检查表</view>
+  <view class="page-title">
+    <view class="nav-back" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>发货检查表
+  </view>
   <view class="search-bar">
     <input class="search-input" placeholder="输入流水号" bindinput="onSearchInput" />
     <button class="search-button" bindtap="onSearch">搜索</button>

@@ -1,19 +1,22 @@
 .fab-wrapper {
-position: fixed;
-bottom: 120rpx;
-right: 40rpx;
-width: 100rpx;
-height: 100rpx;
-border-radius: 50%;
-background-color: #007aff;
-display: flex;
-justify-content: center;
-align-items: center;
-box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.3);
-z-index: 9999;
+    position: fixed;
+    bottom: 340rpx;
+    right: 40rpx;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background-color: #007aff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.3);
+    z-index: 9999;
 }
 .fab-plus {
-color: #fff;
-font-size: 60rpx;
-line-height: 60rpx;
+    color: #fff;
+    font-size: 60rpx;
+    line-height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

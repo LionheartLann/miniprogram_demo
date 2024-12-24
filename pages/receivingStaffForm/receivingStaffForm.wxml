@@ -1,5 +1,9 @@
-<view class="page-header">
-  <view class="page-title">收货检查表</view>
+<view class="page-header" style="padding-top: {{statusBarHeight}}px">
+  <view class="page-title">
+    <view class="nav-back" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>收货检查表
+  </view>
   <view class="search-bar">
     <input class="search-input" placeholder="输入流水号" bindinput="onSearchInput" />
     <button class="search-button" bindtap="onSearch">搜索</button>
@@ -13,9 +17,8 @@
       <text class="table-cell">状态</text>
     </view>
     <block wx:for="{{orders}}" wx:key="serialNumber">
-      <view class="table-row {{getStatusClass(item.status)}}" 
-            bindtap="navigateToDetails" 
-            data-id="{{item.serialNumber}}">
+      <view class="table-row {{getStatusClass(item.status)}}" bindtap="navigateToDetails"
+        data-id="{{item.serialNumber}}">
         <text class="table-cell">{{item.serialNumber}}</text>
         <text class="table-cell status-tag {{getStatusTagClass(item.status)}}">
           {{item.status}}
@@ -35,4 +38,4 @@
   <text>跳转到:</text>
   <input type="number" class="goto-input" bindinput="onPageInput" />
   <button bindtap="onGoPage">Go</button>
-</view> 
+</view>

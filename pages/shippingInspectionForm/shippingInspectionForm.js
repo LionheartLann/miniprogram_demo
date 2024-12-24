@@ -23,7 +23,6 @@ Page({
      */
     onLoad(options) {
         const fullData = getShippingData();
-        this.loadData();
 
         let sysInfo = wx.getSystemInfoSync();
         // 获取微信小程序胶囊布局位置信息
@@ -36,6 +35,11 @@ Page({
             totalPages: Math.ceil(fullData.length / 10),
             allOrders: fullData,
         });
+        this.loadData();
+    },
+
+    navigateBack() {
+        wx.navigateBack();
     },
 
     /**
