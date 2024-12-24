@@ -1,15 +1,15 @@
 /* pages/shippingInspectionForm/shippingInspectionForm.wxss */
 .table-container {
   width: 100%;
-  height: calc(100vh - 240px);
-  margin-top: 10px;
-  margin-bottom: 120px;
+  height: calc(100vh - 660rpx);
+  margin-top: 320rpx;
+  /* margin-bottom: 120px; */
 }
 
 .table {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   max-width: 600px;
 }
 
@@ -108,12 +108,12 @@
 
 .pagination-bar {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 10px;
   background-color: #fff;
-  position: fixed;
-  bottom: 60px;
+  /* position: fixed; */
+  /* bottom: 60px; */
   left: 0;
   right: 0;
   z-index: 99;
@@ -121,7 +121,8 @@
 }
 
 .pagination-bar button {
-  min-width: 80px;
+  /* min-width: 80px; */
+  width: 70px;
   margin: 0 10px;
   font-size: 14px;
   padding: 6px 12px;
@@ -132,9 +133,10 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  box-sizing: border-box;
   background-color: #fff;
-  position: fixed;
-  bottom: 110px;
+  /* position: fixed; */
+  /* bottom: 110px; */
   left: 0;
   right: 0;
   z-index: 99;
@@ -176,15 +178,18 @@
   left: 0;
   right: 0;
   background-color: #f2f2f7;
-  padding-top: env(safe-area-inset-top);
+  /* (safe-area-inset-top); */
+  padding-top: var(--status-bar-height);
   z-index: 100;
+  box-sizing: border-box;
+  /* height: 160px; */
 }
 
 .page-title {
   font-size: 22px;
   font-weight: 600;
   color: #000;
-  padding: 16px 20px 10px;
+  padding: 0 20px 10px;
   margin-top: 10px;
 }
 

@@ -30,21 +30,24 @@
 }
 
 .role-card {
-  margin: 0 16px;
+  /* margin: 0 16px; */
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
-  width: auto;
-  max-width: 800px;
+  width: 100%;
+  /* max-width: 800px; */
   margin-left: auto;
   margin-right: auto;
 }
 
 .role-section {
-  padding: 0 16px;
+  /* padding: 0 16px; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.role-button {
+.role-section .role-button {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,6 +57,11 @@
   border: none;
   border-bottom: 1px solid #e5e5ea;
   border-radius: 0;
+  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 24rpx;
+  padding-right: 24prx;
 }
 
 .role-button:last-child {
@@ -91,6 +99,7 @@
   color: #000;
   flex-shrink: 0;
   width: 100px;
+  text-align: left;
 }
 
 .role-description {
@@ -104,6 +113,7 @@
   flex: 1;
   min-width: 0;
   padding-right: 16px;
+  text-align: left;
 }
 
 .arrow-icon {
