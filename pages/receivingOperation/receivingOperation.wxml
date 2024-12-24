@@ -1,5 +1,9 @@
 <view class="container">
-  <view class="page-title">收货单详情</view>
+  <view class="page-title">
+    <view class="nav-back" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>收货单详情
+  </view>
 
   <view class="detail-card">
     <!-- 基本信息 -->
@@ -32,11 +36,8 @@
       <view class="detail-row">
         <text class="detail-label">实际收货数量</text>
         <block wx:if="{{isEditing && isFieldEditable('quantity')}}">
-          <input class="detail-input" 
-                 type="number"
-                 value="{{formData.quantity}}"
-                 data-field="quantity"
-                 bindinput="onInputChange" />
+          <input class="detail-input" type="number" value="{{formData.quantity}}" data-field="quantity"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.quantity}}</text>
@@ -46,10 +47,7 @@
       <view class="detail-row">
         <text class="detail-label">是否入库</text>
         <block wx:if="{{isEditing && isFieldEditable('stored')}}">
-          <input class="detail-input" 
-                 value="{{formData.stored}}"
-                 data-field="stored"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.stored}}" data-field="stored" bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.stored}}</text>
@@ -84,11 +82,8 @@
       <view class="detail-row vertical">
         <text class="detail-label">做账备注</text>
         <block wx:if="{{isEditing && isFieldEditable('accountingRemarks')}}">
-          <textarea class="detail-textarea" 
-                    value="{{formData.accountingRemarks}}"
-                    data-field="accountingRemarks"
-                    bindinput="onInputChange"
-                    placeholder="请输入做账备注" />
+          <textarea class="detail-textarea" value="{{formData.accountingRemarks}}" data-field="accountingRemarks"
+            bindinput="onInputChange" placeholder="请输入做账备注" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.accountingRemarks || '无'}}</text>
@@ -105,4 +100,4 @@
   <button class="bottom-button save-button" bindtap="saveChanges" wx:if="{{isEditing}}">
     保存
   </button>
-</view> 
+</view>

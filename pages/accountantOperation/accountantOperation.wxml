@@ -1,6 +1,10 @@
 <!--pages/accountantOperation/accountantOperation.wxml-->
 <view class="container">
-  <view class="page-title">发货单详情</view>
+  <view class="page-title">
+    <view class="nav-back" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>发货单详情
+  </view>
 
   <view class="detail-card">
     <!-- 基本信息 -->
@@ -24,10 +28,8 @@
       <view class="detail-row">
         <text class="detail-label">领料单位</text>
         <block wx:if="{{isEditing && isFieldEditable('receivingUnit')}}">
-          <input class="detail-input" 
-                 value="{{formData.receivingUnit}}"
-                 data-field="receivingUnit"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.receivingUnit}}" data-field="receivingUnit"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.receivingUnit}}</text>
@@ -37,10 +39,7 @@
       <view class="detail-row">
         <text class="detail-label">施工项目</text>
         <block wx:if="{{isEditing && isFieldEditable('project')}}">
-          <input class="detail-input" 
-                 value="{{formData.project}}"
-                 data-field="project"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.project}}" data-field="project" bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.project}}</text>
@@ -50,11 +49,8 @@
       <view class="detail-row">
         <text class="detail-label">实际出库数量</text>
         <block wx:if="{{isEditing && isFieldEditable('quantity')}}">
-          <input class="detail-input" 
-                 type="number"
-                 value="{{formData.quantity}}"
-                 data-field="quantity"
-                 bindinput="onInputChange" />
+          <input class="detail-input" type="number" value="{{formData.quantity}}" data-field="quantity"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.quantity}}</text>
@@ -64,11 +60,8 @@
       <view class="detail-row">
         <text class="detail-label">物料类别</text>
         <block wx:if="{{isEditing && isFieldEditable('materialCategory')}}">
-          <picker class="detail-input" 
-                  mode="selector" 
-                  range="{{materialCategories}}"
-                  value="{{materialCategoryIndex}}"
-                  bindchange="onCategoryChange">
+          <picker class="detail-input" mode="selector" range="{{materialCategories}}" value="{{materialCategoryIndex}}"
+            bindchange="onCategoryChange">
             <view>{{formData.materialCategory}}</view>
           </picker>
         </block>
@@ -105,11 +98,8 @@
       <view class="detail-row vertical">
         <text class="detail-label">做账备注</text>
         <block wx:if="{{isEditing && isFieldEditable('accountingRemarks')}}">
-          <textarea class="detail-textarea" 
-                    value="{{formData.accountingRemarks}}"
-                    data-field="accountingRemarks"
-                    bindinput="onInputChange"
-                    placeholder="请输入做账备注" />
+          <textarea class="detail-textarea" value="{{formData.accountingRemarks}}" data-field="accountingRemarks"
+            bindinput="onInputChange" placeholder="请输入做账备注" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.accountingRemarks || '无'}}</text>

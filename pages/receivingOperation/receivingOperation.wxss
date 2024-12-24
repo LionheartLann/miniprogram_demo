@@ -1,145 +1,161 @@
 .container {
-  padding: calc(env(safe-area-inset-top) + 44px) 20px 120px;
-  background-color: #f2f2f7;
-  min-height: 100vh;
-  box-sizing: border-box;
+    padding: calc(env(safe-area-inset-top) + 44px) 20px 120px;
+    background-color: #f2f2f7;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 .page-title {
-  font-size: 22px;
-  font-weight: 600;
-  color: #000;
-  margin-bottom: 20px;
-  padding: 0 16px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 20px;
+    padding: 0 16px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-title .nav-back {
+    position: absolute;
+    left: 12px;
+    /* margin-right: auto; */
+}
+
+.back-icon {
+    font-size: 20px;
+    color: #007aff;
 }
 
 .section-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #666;
-  padding: 16px 16px 8px;
-  background-color: #f2f2f7;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    padding: 16px 16px 8px;
+    background-color: #f2f2f7;
 }
 
 .detail-card {
-  background-color: #fff;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  overflow: hidden;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .detail-group {
-  background-color: #fff;
+    background-color: #fff;
 }
 
 .detail-row {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 8px 16px;
-  border-bottom: 1px solid #e5e5ea;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px 16px;
+    border-bottom: 1px solid #e5e5ea;
 }
 
 .detail-row.vertical {
-  flex-direction: column;
-  align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .detail-row.vertical .detail-label {
-  width: 100%;
-  margin-bottom: 8px;
+    width: 100%;
+    margin-bottom: 8px;
 }
 
 .detail-row.vertical .detail-content,
 .detail-row.vertical .detail-textarea {
-  width: 100%;
-  margin-top: 8px;
+    width: 100%;
+    margin-top: 8px;
 }
 
 .detail-label {
-  width: 120px;
-  font-size: 15px;
-  color: #666;
+    width: 120px;
+    font-size: 15px;
+    color: #666;
 }
 
 .detail-content {
-  flex: 1;
-  font-size: 16px;
-  color: #333;
+    flex: 1;
+    font-size: 16px;
+    color: #333;
 }
 
 .detail-input {
-  flex: 1;
-  height: 36px;
-  font-size: 16px;
-  padding: 0 8px;
-  border: 1px solid #e5e5ea;
-  border-radius: 6px;
-  background-color: #fff;
+    flex: 1;
+    height: 36px;
+    font-size: 16px;
+    padding: 0 8px;
+    border: 1px solid #e5e5ea;
+    border-radius: 6px;
+    background-color: #fff;
 }
 
 .detail-textarea {
-  min-height: 100px;
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  line-height: 1.4;
-  border: 1px solid #e5e5ea;
-  border-radius: 6px;
-  background-color: #fff;
-  box-sizing: border-box;
+    min-height: 100px;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 1.4;
+    border: 1px solid #e5e5ea;
+    border-radius: 6px;
+    background-color: #fff;
+    box-sizing: border-box;
 }
 
 .bottom-buttons {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 16px 20px calc(env(safe-area-inset-bottom) + 16px);
-  background-color: #fff;
-  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  display: flex;
-  gap: 16px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 20px calc(env(safe-area-inset-bottom) + 16px);
+    background-color: #fff;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: flex;
+    gap: 16px;
 }
 
 .bottom-button {
-  flex: 1;
-  height: 44px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    flex: 1;
+    height: 44px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .edit-button {
-  background-color: #fff;
-  border: 1px solid #007aff;
-  color: #007aff;
+    background-color: #fff;
+    border: 1px solid #007aff;
+    color: #007aff;
 }
 
 .save-button {
-  background-color: #007aff;
-  color: #fff;
-  border: none;
+    background-color: #007aff;
+    color: #fff;
+    border: none;
 }
 
 .status-tag {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .status-pending {
-  background-color: #fff3cd;
-  color: #856404;
+    background-color: #fff3cd;
+    color: #856404;
 }
 
 .status-completed {
-  background-color: #d4edda;
-  color: #155724;
-} 
+    background-color: #d4edda;
+    color: #155724;
+}

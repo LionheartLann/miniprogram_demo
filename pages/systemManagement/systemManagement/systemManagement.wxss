@@ -5,6 +5,8 @@
   min-height: 100vh;
   background-color: #f2f2f7;
   padding-bottom: env(safe-area-inset-bottom);
+  padding-left: 20rpx;
+  padding-right: 20rpx;
 }
 
 /* 导航栏 */
@@ -44,7 +46,8 @@
 
 /* 菜单列表 */
 .menu-list {
-  padding: 88px 16px 0;
+  padding: 10px 16px 0;
+  width: 100%;
 }
 
 .menu-item {

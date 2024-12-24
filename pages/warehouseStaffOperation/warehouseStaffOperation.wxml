@@ -1,5 +1,9 @@
 <view class="container">
-  <view class="page-title">{{type === 'shipping' ? '发货' : '收货'}}单详情</view>
+  <view class="page-title">
+    <view class="nav-back" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>{{type === 'shipping' ? '发货' : '收货'}}单详情
+  </view>
 
   <view class="detail-card">
     <!-- 基本信息 -->
@@ -43,10 +47,8 @@
       <view class="detail-row">
         <text class="detail-label">存放位置</text>
         <block wx:if="{{isEditing && isFieldEditable('storageLocation')}}">
-          <input class="detail-input" 
-                 value="{{formData.storageLocation}}"
-                 data-field="storageLocation"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.storageLocation}}" data-field="storageLocation"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.storageLocation}}</text>
@@ -56,10 +58,8 @@
       <view class="detail-row">
         <text class="detail-label">库存状态</text>
         <block wx:if="{{isEditing && isFieldEditable('inventoryStatus')}}">
-          <input class="detail-input" 
-                 value="{{formData.inventoryStatus}}"
-                 data-field="inventoryStatus"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.inventoryStatus}}" data-field="inventoryStatus"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.inventoryStatus}}</text>
@@ -69,10 +69,8 @@
       <view class="detail-row">
         <text class="detail-label">货架号</text>
         <block wx:if="{{isEditing && isFieldEditable('shelfNumber')}}">
-          <input class="detail-input" 
-                 value="{{formData.shelfNumber}}"
-                 data-field="shelfNumber"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.shelfNumber}}" data-field="shelfNumber"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.shelfNumber}}</text>
@@ -82,11 +80,8 @@
       <view class="detail-row">
         <text class="detail-label">数量</text>
         <block wx:if="{{isEditing && isFieldEditable('quantity')}}">
-          <input class="detail-input" 
-                 type="number"
-                 value="{{formData.quantity}}"
-                 data-field="quantity"
-                 bindinput="onInputChange" />
+          <input class="detail-input" type="number" value="{{formData.quantity}}" data-field="quantity"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.quantity}}</text>
@@ -96,10 +91,8 @@
       <view class="detail-row">
         <text class="detail-label">物料编码</text>
         <block wx:if="{{isEditing && isFieldEditable('materialCode')}}">
-          <input class="detail-input" 
-                 value="{{formData.materialCode}}"
-                 data-field="materialCode"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.materialCode}}" data-field="materialCode"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.materialCode}}</text>
@@ -109,10 +102,8 @@
       <view class="detail-row">
         <text class="detail-label">批次号</text>
         <block wx:if="{{isEditing && isFieldEditable('batchNumber')}}">
-          <input class="detail-input" 
-                 value="{{formData.batchNumber}}"
-                 data-field="batchNumber"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.batchNumber}}" data-field="batchNumber"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.batchNumber}}</text>
@@ -126,11 +117,8 @@
       <view class="detail-row vertical">
         <text class="detail-label">仓库备注</text>
         <block wx:if="{{isEditing && isFieldEditable('warehouseRemarks')}}">
-          <textarea class="detail-textarea" 
-                    value="{{formData.warehouseRemarks}}"
-                    data-field="warehouseRemarks"
-                    bindinput="onInputChange"
-                    placeholder="请输入仓库备注" />
+          <textarea class="detail-textarea" value="{{formData.warehouseRemarks}}" data-field="warehouseRemarks"
+            bindinput="onInputChange" placeholder="请输入仓库备注" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.warehouseRemarks || '无'}}</text>
@@ -150,4 +138,4 @@
   <button class="bottom-button export-button" bindtap="exportCurrentOrder" wx:if="{{!isEditing}}">
     导出
   </button>
-</view> 
+</view>

@@ -1,5 +1,9 @@
 <view class="container">
-  <view class="page-title">发货单详情</view>
+  <view class="page-title">
+    <view class="nav-back" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>发货单详情
+  </view>
 
   <view class="detail-card">
     <!-- 基本信息 -->
@@ -23,11 +27,8 @@
       <view class="detail-row">
         <text class="detail-label">实际发货数量</text>
         <block wx:if="{{isEditing && isFieldEditable('actualQuantity')}}">
-          <input class="detail-input" 
-                 type="number"
-                 value="{{formData.actualQuantity}}"
-                 data-field="actualQuantity"
-                 bindinput="onInputChange" />
+          <input class="detail-input" type="number" value="{{formData.actualQuantity}}" data-field="actualQuantity"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.actualQuantity}}</text>
@@ -37,10 +38,8 @@
       <view class="detail-row">
         <text class="detail-label">物料状态</text>
         <block wx:if="{{isEditing && isFieldEditable('materialStatus')}}">
-          <input class="detail-input" 
-                 value="{{formData.materialStatus}}"
-                 data-field="materialStatus"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.materialStatus}}" data-field="materialStatus"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.materialStatus}}</text>
@@ -50,10 +49,8 @@
       <view class="detail-row">
         <text class="detail-label">是否包装</text>
         <block wx:if="{{isEditing && isFieldEditable('isPackaged')}}">
-          <input class="detail-input" 
-                 value="{{formData.isPackaged}}"
-                 data-field="isPackaged"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.isPackaged}}" data-field="isPackaged"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.isPackaged}}</text>
@@ -63,10 +60,8 @@
       <view class="detail-row">
         <text class="detail-label">运输方式</text>
         <block wx:if="{{isEditing && isFieldEditable('transportMethod')}}">
-          <input class="detail-input" 
-                 value="{{formData.transportMethod}}"
-                 data-field="transportMethod"
-                 bindinput="onInputChange" />
+          <input class="detail-input" value="{{formData.transportMethod}}" data-field="transportMethod"
+            bindinput="onInputChange" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.transportMethod}}</text>
@@ -80,11 +75,8 @@
       <view class="detail-row vertical">
         <text class="detail-label">发货备注</text>
         <block wx:if="{{isEditing && isFieldEditable('shippingRemarks')}}">
-          <textarea class="detail-textarea" 
-                    value="{{formData.shippingRemarks}}"
-                    data-field="shippingRemarks"
-                    bindinput="onInputChange"
-                    placeholder="请输入发货备注" />
+          <textarea class="detail-textarea" value="{{formData.shippingRemarks}}" data-field="shippingRemarks"
+            bindinput="onInputChange" placeholder="请输入发货备注" />
         </block>
         <block wx:else>
           <text class="detail-content">{{formData.shippingRemarks || '无'}}</text>
@@ -101,4 +93,4 @@
   <button class="bottom-button save-button" bindtap="saveChanges" wx:if="{{isEditing}}">
     保存
   </button>
-</view> 
+</view>
